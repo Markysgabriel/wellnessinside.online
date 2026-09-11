@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Celestial Blueprint — Align With the Life You Were Meant to Live</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --void:    #0D0618;
+    --deep:    #1A0A2E;
+    --purple:  #7B5EA7;
+    --lavender:#B89FD8;
+    --gold:    #D4AF6A;
+    --gold-dim:rgba(212,175,106,0.15);
+    --cream:   #F5F0FF;
+    --muted:   #8B7BA8;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--void); color: var(--cream); overflow-x: hidden; }
+
+  /* ── Background stars ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 100% 60% at 50% 0%, #2D0F5E 0%, transparent 70%),
+      radial-gradient(circle at 20% 50%, rgba(123,94,167,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(212,175,106,0.05) 0%, transparent 40%);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 7rem 2rem 5rem;
+  }
+  .star-ring {
+    width: 120px; height: 120px; margin: 0 auto 2.5rem;
+    position: relative;
+    animation: rotateSlow 30s linear infinite;
+  }
+  .star-ring svg { width: 100%; height: 100%; }
+  @keyframes rotateSlow { to { transform: rotate(360deg); } }
+
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.25em;
+    color: var(--gold); margin-bottom: 1.5rem;
+    animation: fadeUp 0.9s 0.2s both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 400; line-height: 1.05;
+    color: var(--cream); margin-bottom: 0.8rem;
+    animation: fadeUp 0.9s 0.4s both;
+  }
+  .hero-title em { font-style: italic; color: var(--lavender); }
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-style: italic; font-weight: 400;
+    color: var(--muted); max-width: 520px;
+    line-height: 1.8; margin-bottom: 3rem;
+    animation: fadeUp 0.9s 0.6s both;
+  }
+  .hero-cta { animation: fadeUp 0.9s 0.8s both; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+  .btn-primary {
+    display: inline-block; background: var(--gold); color: var(--void);
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+    letter-spacing: 0.1em; padding: 1.1rem 3.2rem;
+    text-decoration: none; transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--lavender); color: var(--void); transform: translateY(-2px); }
+  .btn-note { font-size: 12px; color: var(--muted); }
+
+  /* ── Sections ── */
+  .wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 4rem 2rem; }
+  .divider { display: flex; align-items: center; gap: 1.5rem; max-width: 360px; margin: 0 auto; padding: 2rem 0; opacity: 0.3; }
+  .div-line { flex: 1; height: 1px; background: var(--gold); }
+
+  .section-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.3em; color: var(--gold); margin-bottom: 1.2rem; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 400; line-height: 1.2;
+    color: var(--cream); margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--lavender); }
+  .body-text { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; }
+
+  /* ── Pain ── */
+  .pain-list { list-style: none; margin: 1.5rem 0; }
+  .pain-list li {
+    font-size: 15px; color: var(--muted); line-height: 1.7;
+    padding: 0.6rem 0 0.6rem 1.8rem; position: relative;
+    border-bottom: 1px solid rgba(212,175,106,0.08);
+  }
+  .pain-list li:last-child { border-bottom: none; }
+  .pain-list li::before { content: '·'; position: absolute; left: 0; color: var(--purple); font-size: 1.5rem; line-height: 1; }
+
+  /* ── Quote ── */
+  .pull-quote {
+    border-left: 1px solid var(--gold);
+    padding: 1.5rem 2rem; margin: 2.5rem 0;
+    background: rgba(123,94,167,0.06);
+  }
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-style: italic; font-weight: 400;
+    color: var(--cream); line-height: 1.7;
+  }
+
+  /* ── Deliverables ── */
+  .deliv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin: 2rem 0; }
+  .deliv-card {
+    border: 1px solid rgba(212,175,106,0.15);
+    padding: 1.5rem; background: rgba(123,94,167,0.05);
+    transition: border-color 0.2s;
+  }
+  .deliv-card:hover { border-color: rgba(212,175,106,0.4); }
+  .deliv-icon { font-size: 22px; margin-bottom: 0.75rem; }
+  .deliv-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--cream); margin-bottom: 0.4rem; }
+  .deliv-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── For whom ── */
+  .for-list { list-style: none; }
+  .for-list li {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 0.9rem 0; border-bottom: 1px solid rgba(123,94,167,0.12);
+    font-size: 15px; color: var(--cream); line-height: 1.6;
+  }
+  .for-list li:last-child { border-bottom: none; }
+  .for-star { color: var(--gold); flex-shrink: 0; }
+
+  /* ── Pricing ── */
+  .pricing-box {
+    border: 1px solid rgba(212,175,106,0.3);
+    padding: 3.5rem 2rem; text-align: center;
+    background: linear-gradient(180deg, rgba(123,94,167,0.08) 0%, transparent 100%);
+    position: relative;
+  }
+  .pricing-box::before {
+    content: '✦';
+    position: absolute; top: -0.7rem; left: 50%; transform: translateX(-50%);
+    background: var(--void); padding: 0 0.75rem;
+    color: var(--gold); font-size: 14px;
+  }
+  .price-was { font-size: 14px; color: var(--muted); text-decoration: line-through; margin-bottom: 0.3rem; }
+  .price-now {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.5rem; font-weight: 400; color: var(--gold);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .price-now sup { font-size: 2.2rem; vertical-align: super; }
+  .price-desc { font-size: 13px; color: var(--muted); margin-bottom: 2rem; }
+  .price-includes { text-align: left; max-width: 360px; margin: 0 auto 2rem; list-style: none; }
+  .price-includes li {
+    font-size: 14px; color: var(--muted); padding: 0.4rem 0 0.4rem 1.6rem;
+    position: relative; border-bottom: 1px solid rgba(212,175,106,0.07);
+  }
+  .price-includes li:last-child { border-bottom: none; }
+  .price-includes li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 9px; top: 0.7rem; }
+  .guarantee { margin-top: 1.5rem; font-size: 12px; color: var(--muted); border-top: 1px solid rgba(212,175,106,0.1); padding-top: 1.5rem; }
+  .delivery-badge { font-size: 12px; color: var(--muted); margin-top: 0.75rem; }
+  .delivery-badge strong { color: var(--gold); }
+
+  /* ── Impressum ── */
+  .impressum {
+    max-width: 720px; margin: 0 auto;
+    padding: 2rem 2rem 0;
+    border-top: 1px solid rgba(212,175,106,0.1);
+  }
+  .impressum-title { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
+  .impressum p { font-size: 12px; color: var(--muted); line-height: 1.9; }
+  .impressum strong { color: var(--lavender); }
+
+  /* ── Footer ── */
+  footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--muted); line-height: 2; position: relative; z-index: 1; }
+  footer a { color: var(--muted); text-decoration: underline; }
+
+  /* ── Reveal ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s, transform 0.8s; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="star-ring">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="55" stroke="#D4AF6A" stroke-width="0.5" opacity="0.4"/>
+      <circle cx="60" cy="60" r="42" stroke="#7B5EA7" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="60" cy="60" r="28" stroke="#D4AF6A" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="60" cy="5"  r="2.5" fill="#D4AF6A" opacity="0.8"/>
+      <circle cx="60" cy="115" r="2.5" fill="#D4AF6A" opacity="0.8"/>
+      <circle cx="5"  cy="60" r="2.5" fill="#D4AF6A" opacity="0.8"/>
+      <circle cx="115" cy="60" r="2.5" fill="#D4AF6A" opacity="0.8"/>
+      <circle cx="22" cy="22" r="1.8" fill="#7B5EA7" opacity="0.7"/>
+      <circle cx="98" cy="22" r="1.8" fill="#7B5EA7" opacity="0.7"/>
+      <circle cx="22" cy="98" r="1.8" fill="#7B5EA7" opacity="0.7"/>
+      <circle cx="98" cy="98" r="1.8" fill="#7B5EA7" opacity="0.7"/>
+      <circle cx="60" cy="60" r="4" fill="#D4AF6A" opacity="0.6"/>
+    </svg>
+  </div>
+  <p class="hero-eyebrow">Spiritual · Energetic · Transformational</p>
+  <h1 class="hero-title">The<br/><em>Celestial</em><br/>Blueprint</h1>
+  <p class="hero-subtitle">Align with the invisible laws that govern abundance — and step into the life you were always meant to live.</p>
+  <div class="hero-cta">
+    <a href="#order" class="btn-primary">Receive My Blueprint — $27</a>
+    <span class="btn-note">180+ page e-book · Instant download · 60-day guarantee</span>
+  </div>
+</section>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<!-- PAIN -->
+<div class="wrap reveal" style="text-align:center;">
+  <p class="section-tag">Does this feel familiar?</p>
+  <h2 class="section-title">You sense that something<br/>greater is <em>available to you.</em><br/>But you can't reach it.</h2>
+  <ul class="pain-list" style="text-align:left;display:inline-block;">
+    <li>You work hard, yet abundance feels just out of reach</li>
+    <li>You believe in the law of attraction — but it isn't working</li>
+    <li>Money comes in, then disappears before you can build anything</li>
+    <li>A quiet voice tells you there's a pattern you can't see</li>
+    <li>You've tried before. Something always pulls you back.</li>
+  </ul>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<!-- PROMISE -->
+<div class="wrap reveal">
+  <p class="section-tag">What this is really about</p>
+  <div class="pull-quote">
+    <p>"The gap between the life you have and the life you sense is possible is not a gap in effort. It is a gap in alignment — and alignment can be learned."</p>
+  </div>
+  <p class="body-text">The Celestial Blueprint is not another book about positive thinking. It is a structured, 180+ page guide to the spiritual and energetic laws that govern how abundance flows — toward some people and away from others — and the precise inner work required to shift which side of that current you stand on.</p>
+  <p class="body-text">Through 7 Celestial Keys, you will learn to see the invisible patterns shaping your reality, dissolve the inherited beliefs keeping you small, and build an entirely new inner architecture — one that is fundamentally aligned with abundance, purpose, and expansion.</p>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<!-- DELIVERABLES -->
+<div class="wrap reveal" style="text-align:center;">
+  <p class="section-tag">What is inside</p>
+  <h2 class="section-title">A complete system for<br/><em>inner transformation</em></h2>
+  <div class="deliv-grid" style="text-align:left;">
+    <div class="deliv-card"><div class="deliv-icon">🌙</div><p class="deliv-title">7 Celestial Keys</p><p class="deliv-desc">A structured framework of energetic and spiritual principles that activate the flow of abundance.</p></div>
+    <div class="deliv-card"><div class="deliv-icon">🔮</div><p class="deliv-title">Belief Dissolution System</p><p class="deliv-desc">Identify, trace, and release the inherited patterns blocking your path — at their root.</p></div>
+    <div class="deliv-card"><div class="deliv-icon">⭐</div><p class="deliv-title">Vibrational Alignment Practice</p><p class="deliv-desc">Daily tools to calibrate your energy toward abundance — practical and spiritually grounded.</p></div>
+    <div class="deliv-card"><div class="deliv-icon">🌌</div><p class="deliv-title">The Celestial Identity Method</p><p class="deliv-desc">Build the inner identity of the version of you who already lives abundantly.</p></div>
+    <div class="deliv-card"><div class="deliv-icon">📖</div><p class="deliv-title">21-Day Activation Plan</p><p class="deliv-desc">A structured daily practice that integrates all 7 Keys into your real life.</p></div>
+    <div class="deliv-card"><div class="deliv-icon">✨</div><p class="deliv-title">180+ Pages of Guidance</p><p class="deliv-desc">Beautifully structured PDF with exercises, journaling space, and deep written content.</p></div>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<!-- FOR WHOM -->
+<div class="wrap reveal">
+  <p class="section-tag">This is for you if</p>
+  <ul class="for-list">
+    <li><span class="for-star">✦</span> You feel a persistent gap between where you are and where you know you could be</li>
+    <li><span class="for-star">✦</span> You've tried manifestation methods but haven't seen lasting results</li>
+    <li><span class="for-star">✦</span> You're ready to go beyond surface-level positivity into genuine inner work</li>
+    <li><span class="for-star">✦</span> You sense that your limiting beliefs run deeper than you've been willing to examine</li>
+    <li><span class="for-star">✦</span> You want a structured, complete system — not fragments of advice</li>
+  </ul>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<!-- PRICING -->
+<div class="wrap reveal" id="order">
+  <div class="pricing-box">
+    <p class="section-tag">Your investment</p>
+    <p class="price-was">Value: $97</p>
+    <p class="price-now"><sup>$</sup>27</p>
+    <p class="price-desc">One-time payment · Instant access · No subscriptions</p>
+    <ul class="price-includes">
+      <li>The Celestial Blueprint — Full 180+ page PDF e-book</li>
+      <li>7 Celestial Keys framework with guided exercises</li>
+      <li>Belief Dissolution System</li>
+      <li>Vibrational Alignment daily practice tools</li>
+      <li>The Celestial Identity Method</li>
+      <li>21-Day Activation Plan</li>
+      <li>Full journaling and reflection workbook section</li>
+    </ul>
+    <p class="delivery-badge"><strong>Delivery:</strong> Digital product — instant PDF download via Digistore24 · No shipping required</p>
+    <a href="#" class="btn-primary" style="display:inline-block;margin-top:1.5rem;">Yes — I'm Ready for My Blueprint →</a>
+    <p class="guarantee">🔒 Protected by a 60-day money-back guarantee. If you don't experience a genuine shift, you receive a full refund — no questions asked.</p>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<!-- IMPRESSUM -->
+<!-- Seção de Garantia -->
+ <footer style="background-color: #f4f4f4; padding: 40px 20px; font-family: Arial, sans-serif; border-top: 1px solid #ccc;">
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <img src="images/garantia.webp" alt="Garantia 60 dias" style="max-width: 100px;">
+
+      <h3 style="color: #003366;">60 DAYS MONEY BACK GUARANTEE 100% SATISFACTION GUARANTEED</h3>
+
+      <p style="font-size: 16px; color: #333; max-width: 600px;">
+       We offer a 100% Money Back Guarantee: 60 business days from the date of your original purchase. If you are not fully satisfied with our product or your results within the first 60 days, we will simply notify you by email and we will be happy to refund you in full within 48 hours.
+      </p>
+    </div>
+
+    <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px;">
+      <p style="color: #555;">© 2026 The Prosperity Code · All rights reserved</p>
+      <p style="margin-top: 10px;">
+        <a href="https://gemaacademia.online/privac" style="color: #003366; margin: 0 10px; text-decoration: none;">Privacy policy</a> |
+        <a href="https://gemaacademia.online/terminos" style="color: #003366; margin: 0 10px; text-decoration: none;">Terms and Conditions</a> |
+        <a href="https://gemaacademia.online/contact" style="color: #003366; margin: 0 10px; text-decoration: none;">Contacts</a> |
+        <a href="https://gemaacademia.online/responsabilidad" style="color: #003366; margin: 0 10px; text-decoration: none;">Disclaimer of liability</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
