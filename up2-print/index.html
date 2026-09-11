@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sacred Star Rituals — The Complete Manifestation Toolkit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--void:#080512;--purple:#5A3E8A;--lavender:#B89FD8;--gold:#D4AF6A;--cream:#F5F0FF;--muted:#8B7BA8;--indigo:#3D2B6B;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--void);color:var(--cream);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 90% 55% at 50% 0%,#1A0838 0%,transparent 65%);}
+  .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;}
+  .bump-tag{display:inline-block;background:var(--indigo);color:var(--lavender);font-size:11px;font-weight:500;letter-spacing:0.2em;padding:6px 22px;margin-bottom:2rem;animation:fadeUp 0.6s 0.1s both;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:400;line-height:1.05;color:var(--cream);margin-bottom:1rem;animation:fadeUp 0.8s 0.3s both;}
+  .hero-title em{font-style:italic;color:var(--lavender);}
+  .hero-sub{font-family:'Playfair Display',serif;font-size:clamp(1rem,2.5vw,1.4rem);font-style:italic;color:var(--muted);max-width:500px;line-height:1.8;margin-bottom:2.5rem;animation:fadeUp 0.8s 0.5s both;}
+  .btn{display:inline-block;background:var(--gold);color:var(--void);font-size:14px;font-weight:500;letter-spacing:0.1em;padding:1.1rem 3rem;text-decoration:none;transition:background 0.2s,transform 0.2s;animation:fadeUp 0.8s 0.7s both;border:none;cursor:pointer;}
+  .btn:hover{background:var(--lavender);color:var(--void);transform:translateY(-2px);}
+  .btn-skip{display:block;margin-top:1rem;font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;background:none;border:none;}
+  .divider{display:flex;align-items:center;gap:1.5rem;max-width:360px;margin:0 auto;padding:2.5rem 0;opacity:0.3;}
+  .div-line{flex:1;height:1px;background:var(--gold);}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:4rem 2rem;}
+  .tag{font-size:10px;font-weight:500;letter-spacing:0.3em;color:var(--gold);margin-bottom:1.2rem;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;line-height:1.2;color:var(--cream);margin-bottom:1.5rem;}
+  .sec-title em{font-style:italic;color:var(--lavender);}
+  .body{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:1.2rem;}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin:2rem 0;}
+  .tool-card{border:1px solid rgba(212,175,106,0.15);padding:1.5rem;background:rgba(90,62,138,0.05);transition:border-color 0.2s;}
+  .tool-card:hover{border-color:rgba(212,175,106,0.4);}
+  .tool-icon{font-size:26px;margin-bottom:0.75rem;}
+  .tool-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:0.4rem;}
+  .tool-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+  .price-box{border:1px solid rgba(212,175,106,0.3);padding:3rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(90,62,138,0.08) 0%,transparent 100%);position:relative;}
+  .price-box::before{content:'✦';position:absolute;top:-0.7rem;left:50%;transform:translateX(-50%);background:var(--void);padding:0 0.75rem;color:var(--gold);font-size:14px;}
+  .price-val{font-family:'Playfair Display',serif;font-size:5rem;font-weight:400;color:var(--gold);line-height:1;margin-bottom:0.5rem;}
+  .price-val sup{font-size:2rem;vertical-align:super;}
+  .price-desc{font-size:13px;color:var(--muted);margin-bottom:2rem;}
+  .price-inc{text-align:left;max-width:360px;margin:0 auto 1.5rem;list-style:none;}
+  .price-inc li{font-size:14px;color:var(--muted);padding:0.4rem 0 0.4rem 1.6rem;position:relative;border-bottom:1px solid rgba(212,175,106,0.07);}
+  .price-inc li:last-child{border-bottom:none;}
+  .price-inc li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:9px;top:0.7rem;}
+  .guar{margin-top:1.5rem;font-size:12px;color:var(--muted);border-top:1px solid rgba(212,175,106,0.1);padding-top:1.5rem;}
+  .deliv{font-size:12px;color:var(--muted);margin-top:0.75rem;}
+  .deliv strong{color:var(--gold);}
+  .impressum{max-width:720px;margin:0 auto;padding:2rem 2rem 0;border-top:1px solid rgba(212,175,106,0.1);}
+  .impressum .itag{font-size:10px;font-weight:500;letter-spacing:0.25em;color:var(--gold);margin-bottom:0.75rem;}
+  .impressum p{font-size:12px;color:var(--muted);line-height:1.9;}
+  .impressum strong{color:var(--lavender);}
+  footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);line-height:2;position:relative;z-index:1;}
+  footer a{color:var(--muted);text-decoration:underline;}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s,transform 0.8s;}
+  .reveal.visible{opacity:1;transform:none;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="bump-tag">Upsell Offer — One Time Only</div>
+  <h1 class="hero-title"><em>Sacred Star</em><br/>Rituals</h1>
+  <p class="hero-sub">The complete manifestation toolkit — 5 practical spiritual tools to make your daily alignment practice inevitable and powerful.</p>
+  <a href="#order" class="btn">Yes — Add This Toolkit · $47 →</a>
+  <button class="btn-skip">No thanks, I don't need these tools</button>
+</section>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">The missing piece</p>
+  <h2 class="sec-title">Knowledge without practice<br/><em>leaves no trace.</em></h2>
+  <p class="body">The Celestial Blueprint gave you the understanding. Sacred Star Rituals gives you the daily instruments — five purposefully designed tools that turn spiritual principles into embodied, consistent practice. Because transformation lives in what you do every day, not just what you understand.</p>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">What you receive</p>
+  <h2 class="sec-title" style="text-align:center;">Five tools.<br/><em>One complete practice.</em></h2>
+  <div class="tools-grid">
+    <div class="tool-card"><div class="tool-icon">🃏</div><p class="tool-title">Star Affirmation Deck</p><p class="tool-desc">54 printable PDF cards — one for each of the 7 Celestial Keys plus extended abundance activations.</p></div>
+    <div class="tool-card"><div class="tool-icon">🌙</div><p class="tool-title">Lunar Abundance Planner</p><p class="tool-desc">12-month goal planner aligned with lunar cycles — set intentions, track momentum, celebrate growth.</p></div>
+    <div class="tool-card"><div class="tool-icon">🗺️</div><p class="tool-title">Celestial Vision Map</p><p class="tool-desc">Structured vision board guide with 6 life zones and Canva-compatible layout templates.</p></div>
+    <div class="tool-card"><div class="tool-icon">📓</div><p class="tool-title">365 Alignment Journal</p><p class="tool-desc">A full year of guided daily journal prompts organized by theme, depth, and season.</p></div>
+    <div class="tool-card"><div class="tool-icon">🌬️</div><p class="tool-title">Energy Clearing Checklist</p><p class="tool-desc">Weekly and monthly rituals to clear stagnant energy and reset your vibrational baseline.</p></div>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal" id="order">
+  <div class="price-box">
+    <p class="tag">Complete your practice</p>
+    <p class="price-val"><sup>$</sup>47</p>
+    <p class="price-desc">One-time payment · All items instant digital download</p>
+    <ul class="price-inc">
+      <li>Star Affirmation Card Deck (54 cards, printable PDF)</li>
+      <li>Lunar Abundance Planner (12 months, PDF)</li>
+      <li>Celestial Vision Map guide and templates</li>
+      <li>365 Alignment Journal (full year of prompts, PDF)</li>
+      <li>Energy Clearing Checklist (weekly + monthly, PDF)</li>
+    </ul>
+    <p class="deliv"><strong>Delivery:</strong> Digital product — instant PDF download via Digistore24 · No shipping required</p>
+    <a href="#" class="btn" style="display:inline-block;margin-top:1.5rem;">Yes — Add Sacred Star Rituals →</a>
+    <p class="guar">🔒 Covered by the 60-day money-back guarantee.</p>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<!-- Seção de Garantia -->
+ <footer style="background-color: #f4f4f4; padding: 40px 20px; font-family: Arial, sans-serif; border-top: 1px solid #ccc;">
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <img src="images/garantia.webp" alt="Garantia 60 dias" style="max-width: 100px;">
+
+      <h3 style="color: #003366;">60 DAYS MONEY BACK GUARANTEE 100% SATISFACTION GUARANTEED</h3>
+
+      <p style="font-size: 16px; color: #333; max-width: 600px;">
+       We offer a 100% Money Back Guarantee: 60 business days from the date of your original purchase. If you are not fully satisfied with our product or your results within the first 60 days, we will simply notify you by email and we will be happy to refund you in full within 48 hours.
+      </p>
+    </div>
+
+    <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px;">
+      <p style="color: #555;">© 2026 The Prosperity Code · All rights reserved</p>
+      <p style="margin-top: 10px;">
+        <a href="https://gemaacademia.online/privac" style="color: #003366; margin: 0 10px; text-decoration: none;">Privacy policy</a> |
+        <a href="https://gemaacademia.online/terminos" style="color: #003366; margin: 0 10px; text-decoration: none;">Terms and Conditions</a> |
+        <a href="https://gemaacademia.online/contact" style="color: #003366; margin: 0 10px; text-decoration: none;">Contacts</a> |
+        <a href="https://gemaacademia.online/responsabilidad" style="color: #003366; margin: 0 10px; text-decoration: none;">Disclaimer of liability</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

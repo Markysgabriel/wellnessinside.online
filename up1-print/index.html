@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Celestial Frequency — 21-Day Activation Program</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--void:#0A0618;--deep:#150A28;--purple:#6B4E9A;--lavender:#B89FD8;--gold:#D4AF6A;--cream:#F5F0FF;--muted:#8B7BA8;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--void);color:var(--cream);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 100% 60% at 50% 0%,#220D4A 0%,transparent 70%);}
+  .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;}
+  .bump-tag{display:inline-block;background:var(--purple);color:var(--cream);font-size:11px;font-weight:500;letter-spacing:0.2em;padding:6px 22px;margin-bottom:2rem;animation:fadeUp 0.6s 0.1s both;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,6rem);font-weight:400;line-height:1.05;color:var(--cream);margin-bottom:1rem;animation:fadeUp 0.8s 0.3s both;}
+  .hero-title em{font-style:italic;color:var(--lavender);}
+  .hero-sub{font-family:'Playfair Display',serif;font-size:clamp(1rem,2.5vw,1.5rem);font-style:italic;color:var(--muted);max-width:500px;line-height:1.8;margin-bottom:2.5rem;animation:fadeUp 0.8s 0.5s both;}
+  .btn{display:inline-block;background:var(--gold);color:var(--void);font-size:14px;font-weight:500;letter-spacing:0.1em;padding:1.1rem 3rem;text-decoration:none;transition:background 0.2s,transform 0.2s;animation:fadeUp 0.8s 0.7s both;border:none;cursor:pointer;}
+  .btn:hover{background:var(--lavender);color:var(--void);transform:translateY(-2px);}
+  .btn-skip{display:block;margin-top:1rem;font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;background:none;border:none;animation:fadeUp 0.8s 0.8s both;}
+  .divider{display:flex;align-items:center;gap:1.5rem;max-width:360px;margin:0 auto;padding:2.5rem 0;opacity:0.3;}
+  .div-line{flex:1;height:1px;background:var(--gold);}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:4rem 2rem;}
+  .tag{font-size:10px;font-weight:500;letter-spacing:0.3em;color:var(--gold);margin-bottom:1.2rem;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;line-height:1.2;color:var(--cream);margin-bottom:1.5rem;}
+  .sec-title em{font-style:italic;color:var(--lavender);}
+  .body{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:1.2rem;}
+  .quote-block{border-left:1px solid var(--gold);padding:1.5rem 2rem;margin:2rem 0;background:rgba(107,78,154,0.06);}
+  .quote-block p{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;color:var(--cream);line-height:1.7;}
+  .phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.2rem;margin:2rem 0;}
+  .phase-card{border:1px solid rgba(212,175,106,0.15);padding:1.5rem;background:rgba(107,78,154,0.05);transition:border-color 0.2s;}
+  .phase-card:hover{border-color:rgba(212,175,106,0.4);}
+  .phase-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:rgba(212,175,106,0.2);line-height:1;margin-bottom:0.5rem;}
+  .phase-days{font-size:10px;color:var(--gold);letter-spacing:0.15em;margin-bottom:0.4rem;}
+  .phase-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:0.5rem;}
+  .phase-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+  .days-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:0.8rem;margin:2rem 0;}
+  .day-item{border:1px solid rgba(212,175,106,0.1);padding:0.9rem;background:rgba(107,78,154,0.03);transition:border-color 0.2s;}
+  .day-item:hover{border-color:rgba(212,175,106,0.3);}
+  .day-num{font-size:10px;color:var(--gold);letter-spacing:0.12em;margin-bottom:0.3rem;}
+  .day-title{font-size:13px;font-weight:500;color:var(--cream);line-height:1.4;}
+  .inside-list{list-style:none;}
+  .inside-list li{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(212,175,106,0.08);font-size:15px;color:var(--cream);line-height:1.6;}
+  .inside-list li:last-child{border-bottom:none;}
+  .check{color:var(--gold);flex-shrink:0;}
+  .price-box{border:1px solid rgba(212,175,106,0.3);padding:3rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(107,78,154,0.08) 0%,transparent 100%);position:relative;}
+  .price-box::before{content:'✦';position:absolute;top:-0.7rem;left:50%;transform:translateX(-50%);background:var(--void);padding:0 0.75rem;color:var(--gold);font-size:14px;}
+  .price-val{font-family:'Playfair Display',serif;font-size:5rem;font-weight:400;color:var(--gold);line-height:1;margin-bottom:0.5rem;}
+  .price-val sup{font-size:2rem;vertical-align:super;}
+  .price-desc{font-size:13px;color:var(--muted);margin-bottom:2rem;}
+  .price-inc{text-align:left;max-width:360px;margin:0 auto 1.5rem;list-style:none;}
+  .price-inc li{font-size:14px;color:var(--muted);padding:0.4rem 0 0.4rem 1.6rem;position:relative;border-bottom:1px solid rgba(212,175,106,0.07);}
+  .price-inc li:last-child{border-bottom:none;}
+  .price-inc li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:9px;top:0.7rem;}
+  .guar{margin-top:1.5rem;font-size:12px;color:var(--muted);border-top:1px solid rgba(212,175,106,0.1);padding-top:1.5rem;}
+  .deliv{font-size:12px;color:var(--muted);margin-top:0.75rem;}
+  .deliv strong{color:var(--gold);}
+  .impressum{max-width:720px;margin:0 auto;padding:2rem 2rem 0;border-top:1px solid rgba(212,175,106,0.1);}
+  .impressum .itag{font-size:10px;font-weight:500;letter-spacing:0.25em;color:var(--gold);margin-bottom:0.75rem;}
+  .impressum p{font-size:12px;color:var(--muted);line-height:1.9;}
+  .impressum strong{color:var(--lavender);}
+  footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);line-height:2;position:relative;z-index:1;}
+  footer a{color:var(--muted);text-decoration:underline;}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s,transform 0.8s;}
+  .reveal.visible{opacity:1;transform:none;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="bump-tag">Special One-Time Offer</div>
+  <h1 class="hero-title">The Celestial<br/><em>Frequency</em></h1>
+  <p class="hero-sub">21 days of structured daily practice to anchor your alignment, dissolve what remains, and build the inner habits that sustain transformation.</p>
+  <a href="#order" class="btn">Yes — Add This to My Order · $37 →</a>
+  <button class="btn-skip">No thanks, I'll pass on this</button>
+</section>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">Why daily practice matters</p>
+  <h2 class="sec-title">Reading shifts awareness.<br/><em>Practice shifts reality.</em></h2>
+  <p class="body">The Celestial Blueprint gives you the map. This program gives you the daily walk. Each of the 21 days builds on the last — moving you from releasing the old, through aligning with what's possible, to fully anchoring a new identity.</p>
+  <div class="quote-block"><p>"Twenty-one days of intentional daily practice creates measurable neural change. This is not motivation — it is architecture."</p></div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">Program structure</p>
+  <h2 class="sec-title" style="text-align:center;">Three phases.<br/><em>One complete shift.</em></h2>
+  <div class="phases">
+    <div class="phase-card"><div class="phase-num">01</div><p class="phase-days">Days 1–7</p><p class="phase-name">Release & Clear</p><p class="phase-desc">Dissolve inherited beliefs, emotional patterns, and the energetic weight of the past.</p></div>
+    <div class="phase-card"><div class="phase-num">02</div><p class="phase-days">Days 8–14</p><p class="phase-name">Align & Attract</p><p class="phase-desc">Build your celestial vision, calibrate your daily energy, and begin moving with intention.</p></div>
+    <div class="phase-card"><div class="phase-num">03</div><p class="phase-days">Days 15–21</p><p class="phase-name">Anchor & Expand</p><p class="phase-desc">Solidify your new identity and build the daily structures that sustain your transformation.</p></div>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">Day by day</p>
+  <h2 class="sec-title" style="text-align:center;">21 days. 21 practices.<br/><em>Every one purposeful.</em></h2>
+  <div class="days-grid">
+    <div class="day-item"><p class="day-num">Day 1</p><p class="day-title">Clearing the Ground</p></div>
+    <div class="day-item"><p class="day-num">Day 2</p><p class="day-title">Your First Belief Memory</p></div>
+    <div class="day-item"><p class="day-num">Day 3</p><p class="day-title">The Weight You Carry</p></div>
+    <div class="day-item"><p class="day-num">Day 4</p><p class="day-title">Inherited Patterns</p></div>
+    <div class="day-item"><p class="day-num">Day 5</p><p class="day-title">The Four Inner Fears</p></div>
+    <div class="day-item"><p class="day-num">Day 6</p><p class="day-title">Forgiveness as Freedom</p></div>
+    <div class="day-item"><p class="day-num">Day 7</p><p class="day-title">Week One Integration</p></div>
+    <div class="day-item"><p class="day-num">Day 8</p><p class="day-title">Your Celestial Vision</p></div>
+    <div class="day-item"><p class="day-num">Day 9</p><p class="day-title">The Alignment Practice</p></div>
+    <div class="day-item"><p class="day-num">Day 10</p><p class="day-title">Gratitude as a Signal</p></div>
+    <div class="day-item"><p class="day-num">Day 11</p><p class="day-title">Abundance in the Body</p></div>
+    <div class="day-item"><p class="day-num">Day 12</p><p class="day-title">The Flow Principle</p></div>
+    <div class="day-item"><p class="day-num">Day 13</p><p class="day-title">Aligned Action</p></div>
+    <div class="day-item"><p class="day-num">Day 14</p><p class="day-title">Week Two Integration</p></div>
+    <div class="day-item"><p class="day-num">Day 15</p><p class="day-title">Identity Embodiment</p></div>
+    <div class="day-item"><p class="day-num">Day 16</p><p class="day-title">Relationships & Energy</p></div>
+    <div class="day-item"><p class="day-num">Day 17</p><p class="day-title">The Celestial Entrepreneur</p></div>
+    <div class="day-item"><p class="day-num">Day 18</p><p class="day-title">Gratitude Expansion</p></div>
+    <div class="day-item"><p class="day-num">Day 19</p><p class="day-title">Dissolving What Remains</p></div>
+    <div class="day-item"><p class="day-num">Day 20</p><p class="day-title">Building Your System</p></div>
+    <div class="day-item"><p class="day-num">Day 21</p><p class="day-title">The Completion Ceremony</p></div>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">What's inside</p>
+  <h2 class="sec-title">Everything you need.<br/><em>Nothing unnecessary.</em></h2>
+  <ul class="inside-list">
+    <li><span class="check">✦</span> 21 daily written exercises — structured, progressive, purposeful</li>
+    <li><span class="check">✦</span> Body-based awareness practices to release emotional patterns</li>
+    <li><span class="check">✦</span> Deep journaling prompts with guided reflection space</li>
+    <li><span class="check">✦</span> One daily affirmation per day, aligned to each phase</li>
+    <li><span class="check">✦</span> Action steps bridging inner work to outer results</li>
+    <li><span class="check">✦</span> Day 21 completion ceremony to anchor your new identity</li>
+    <li><span class="check">✦</span> Instant PDF download — begin today</li>
+  </ul>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal" id="order">
+  <div class="price-box">
+    <p class="tag">Add to your order now</p>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:0.5rem;">One-time offer — won't appear again</p>
+    <p class="price-val"><sup>$</sup>37</p>
+    <p class="price-desc">One-time payment · Instant PDF download</p>
+    <ul class="price-inc">
+      <li>Full 21-day written activation program (PDF)</li>
+      <li>3 phases: Release, Align & Attract, Anchor & Expand</li>
+      <li>21 step-by-step daily exercises with journaling space</li>
+      <li>21 daily affirmations — one per day</li>
+      <li>Day 21 completion ceremony and sustainability plan</li>
+    </ul>
+    <p class="deliv"><strong>Delivery:</strong> Digital product — instant PDF download via Digistore24 · No shipping required</p>
+    <a href="#" class="btn" style="display:inline-block;margin-top:1.5rem;">Yes — Add The Celestial Frequency →</a>
+    <p class="guar">🔒 Covered by the 60-day money-back guarantee. Zero risk.</p>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:14px;">✦</span><div class="div-line"></div></div>
+
+ <!-- Seção de Garantia -->
+ <footer style="background-color: #f4f4f4; padding: 40px 20px; font-family: Arial, sans-serif; border-top: 1px solid #ccc;">
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <img src="images/garantia.webp" alt="Garantia 60 dias" style="max-width: 100px;">
+
+      <h3 style="color: #003366;">60 DAYS MONEY BACK GUARANTEE 100% SATISFACTION GUARANTEED</h3>
+
+      <p style="font-size: 16px; color: #333; max-width: 600px;">
+       We offer a 100% Money Back Guarantee: 60 business days from the date of your original purchase. If you are not fully satisfied with our product or your results within the first 60 days, we will simply notify you by email and we will be happy to refund you in full within 48 hours.
+      </p>
+    </div>
+
+    <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px;">
+      <p style="color: #555;">© 2026 The Prosperity Code · All rights reserved</p>
+      <p style="margin-top: 10px;">
+        <a href="https://gemaacademia.online/privac" style="color: #003366; margin: 0 10px; text-decoration: none;">Privacy policy</a> |
+        <a href="https://gemaacademia.online/terminos" style="color: #003366; margin: 0 10px; text-decoration: none;">Terms and Conditions</a> |
+        <a href="https://gemaacademia.online/contact" style="color: #003366; margin: 0 10px; text-decoration: none;">Contacts</a> |
+        <a href="https://gemaacademia.online/responsabilidad" style="color: #003366; margin: 0 10px; text-decoration: none;">Disclaimer of liability</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Celestial Mastery — Advanced Alignment Workbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--void:#0C0818;--purple:#7B3FA0;--lavender:#C9A8E8;--gold:#D4AF6A;--cream:#F8F0FF;--muted:#9680B8;--deep:#1E0840;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--void);color:var(--cream);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 90% 55% at 50% 0%,#2A0A5A 0%,transparent 65%);}
+  .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;}
+  .bump-tag{display:inline-block;border:1px solid rgba(212,175,106,0.4);color:var(--gold);font-size:11px;font-weight:500;letter-spacing:0.2em;padding:6px 22px;margin-bottom:2rem;animation:fadeUp 0.6s 0.1s both;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:400;line-height:1.05;color:var(--cream);margin-bottom:1rem;animation:fadeUp 0.8s 0.3s both;}
+  .hero-title em{font-style:italic;color:var(--lavender);}
+  .hero-sub{font-family:'Playfair Display',serif;font-size:clamp(1rem,2.5vw,1.4rem);font-style:italic;color:var(--muted);max-width:540px;line-height:1.8;margin-bottom:2.5rem;animation:fadeUp 0.8s 0.5s both;}
+  .btn{display:inline-block;background:var(--gold);color:var(--void);font-size:14px;font-weight:500;letter-spacing:0.1em;padding:1.1rem 3rem;text-decoration:none;transition:background 0.2s,transform 0.2s;animation:fadeUp 0.8s 0.7s both;border:none;cursor:pointer;}
+  .btn:hover{background:var(--lavender);color:var(--void);transform:translateY(-2px);}
+  .btn-skip{display:block;margin-top:1rem;font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;background:none;border:none;}
+  .divider{display:flex;align-items:center;gap:1.5rem;max-width:360px;margin:0 auto;padding:2.5rem 0;opacity:0.3;}
+  .div-line{flex:1;height:1px;background:var(--gold);}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:4rem 2rem;}
+  .tag{font-size:10px;font-weight:500;letter-spacing:0.3em;color:var(--gold);margin-bottom:1.2rem;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;line-height:1.2;color:var(--cream);margin-bottom:1.5rem;}
+  .sec-title em{font-style:italic;color:var(--lavender);}
+  .body{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:1.2rem;}
+  .bridge{border:1px solid rgba(212,175,106,0.2);padding:2rem;background:rgba(123,63,160,0.05);margin:2rem 0;}
+  .bridge p{font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;color:var(--cream);line-height:1.7;}
+  .bridge strong{color:var(--lavender);font-style:normal;}
+  .modules-list{list-style:none;}
+  .module-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(212,175,106,0.1);}
+  .module-item:last-child{border-bottom:none;}
+  .mod-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:rgba(212,175,106,0.2);line-height:1;flex-shrink:0;width:50px;}
+  .mod-content{}
+  .mod-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--cream);margin-bottom:0.4rem;}
+  .mod-desc{font-size:14px;color:var(--muted);line-height:1.7;}
+  .price-box{border:1px solid rgba(212,175,106,0.3);padding:3rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(123,63,160,0.08) 0%,transparent 100%);position:relative;}
+  .price-box::before{content:'✦';position:absolute;top:-0.7rem;left:50%;transform:translateX(-50%);background:var(--void);padding:0 0.75rem;color:var(--gold);font-size:14px;}
+  .price-val{font-family:'Playfair Display',serif;font-size:5rem;font-weight:400;color:var(--gold);line-height:1;margin-bottom:0.5rem;}
+  .price-val sup{font-size:2rem;vertical-align:super;}
+  .price-desc{font-size:13px;color:var(--muted);margin-bottom:2rem;}
+  .price-inc{text-align:left;max-width:360px;margin:0 auto 1.5rem;list-style:none;}
+  .price-inc li{font-size:14px;color:var(--muted);padding:0.4rem 0 0.4rem 1.6rem;position:relative;border-bottom:1px solid rgba(212,175,106,0.07);}
+  .price-inc li:last-child{border-bottom:none;}
+  .price-inc li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:9px;top:0.7rem;}
+  .guar{margin-top:1.5rem;font-size:12px;color:var(--muted);border-top:1px solid rgba(212,175,106,0.1);padding-top:1.5rem;}
+  .deliv{font-size:12px;color:var(--muted);margin-top:0.75rem;}
+  .deliv strong{color:var(--gold);}
+  .impressum{max-width:720px;margin:0 auto;padding:2rem 2rem 0;border-top:1px solid rgba(212,175,106,0.1);}
+  .impressum .itag{font-size:10px;font-weight:500;letter-spacing:0.25em;color:var(--gold);margin-bottom:0.75rem;}
+  .impressum p{font-size:12px;color:var(--muted);line-height:1.9;}
+  .impressum strong{color:var(--lavender);}
+  footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);line-height:2;position:relative;z-index:1;}
+  footer a{color:var(--muted);text-decoration:underline;}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s,transform 0.8s;}
+  .reveal.visible{opacity:1;transform:none;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="bump-tag">Advanced Program</div>
+  <h1 class="hero-title"><em>Celestial</em><br/>Mastery</h1>
+  <p class="hero-sub">The advanced 8-module workbook where deep spiritual alignment meets real-world strategy — for transformation that is permanent and measurable.</p>
+  <a href="#order" class="btn">Yes — Unlock Celestial Mastery · $97 →</a>
+  <button class="btn-skip">No thanks, I'll stay at the current level</button>
+</section>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <div class="bridge">
+    <p>Spiritual alignment without <strong>strategic action</strong> is wishful thinking. Strategic action without <strong>spiritual alignment</strong> is exhausting. Celestial Mastery is where these two forces unite.</p>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">8-module curriculum</p>
+  <h2 class="sec-title">Deep work.<br/><em>Complete transformation.</em></h2>
+  <p class="body">Each module combines educational content with guided exercises, journaling space, self-assessment scales, and a personal commitment section. Work at your own pace.</p>
+  <ul class="modules-list">
+    <li class="module-item"><span class="mod-num">01</span><div class="mod-content"><p class="mod-title">The Architecture of Your Reality</p><p class="mod-desc">Map the energetic and psychological structures that determine your current life experience — and understand exactly what must change.</p></div></li>
+    <li class="module-item"><span class="mod-num">02</span><div class="mod-content"><p class="mod-title">Energy Centers & Abundance</p><p class="mod-desc">Explore the relationship between your seven energy centers and specific life patterns. Identify where alignment is blocked and how to restore flow.</p></div></li>
+    <li class="module-item"><span class="mod-num">03</span><div class="mod-content"><p class="mod-title">The Debt Mindset Reset</p><p class="mod-desc">Shift your relationship with financial difficulty from shame and avoidance to clarity and empowered action.</p></div></li>
+    <li class="module-item"><span class="mod-num">04</span><div class="mod-content"><p class="mod-title">Celestial Identity Construction</p><p class="mod-desc">Build a new self-concept at the identity level — one that makes abundance a natural expression of who you are.</p></div></li>
+    <li class="module-item"><span class="mod-num">05</span><div class="mod-content"><p class="mod-title">The Aligned Entrepreneur</p><p class="mod-desc">For business owners: pricing from worth, attracting aligned clients, and building offers that reflect your true energetic value.</p></div></li>
+    <li class="module-item"><span class="mod-num">06</span><div class="mod-content"><p class="mod-title">The Universal Laws of Flow</p><p class="mod-desc">Deep exploration of the laws of reciprocity, circulation, and expansion — and how to apply them consciously every day.</p></div></li>
+    <li class="module-item"><span class="mod-num">07</span><div class="mod-content"><p class="mod-title">Relationships, Money & Energy</p><p class="mod-desc">Examine how family patterns and generational beliefs are shaping your current reality — and how to rewrite the story.</p></div></li>
+    <li class="module-item"><span class="mod-num">08</span><div class="mod-content"><p class="mod-title">Integration & Expansion</p><p class="mod-desc">Your personal Celestial Mastery Plan — a living document that keeps your energy, mindset, and strategy aligned for life.</p></div></li>
+  </ul>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal" id="order">
+  <div class="price-box">
+    <p class="tag">Full workbook access</p>
+    <p class="price-val"><sup>$</sup>97</p>
+    <p class="price-desc">One-time payment · Instant PDF download · Lifetime access</p>
+    <ul class="price-inc">
+      <li>Full Celestial Mastery Workbook (PDF, 8 modules)</li>
+      <li>Guided exercises and journaling space per module</li>
+      <li>Energy Centers & Abundance alignment guide</li>
+      <li>Debt Mindset Reset protocol</li>
+      <li>Aligned Entrepreneur Blueprint</li>
+      <li>Personal Celestial Mastery Plan template</li>
+      <li>Lifetime access including all future updates</li>
+    </ul>
+    <p class="deliv"><strong>Delivery:</strong> Digital product — instant PDF download via Digistore24 · No shipping required</p>
+    <a href="#" class="btn" style="display:inline-block;margin-top:1.5rem;">Yes — I Want Celestial Mastery →</a>
+    <p class="guar">🔒 60-day money-back guarantee. Full refund if you're not completely satisfied.</p>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+<!-- Seção de Garantia -->
+ <footer style="background-color: #f4f4f4; padding: 40px 20px; font-family: Arial, sans-serif; border-top: 1px solid #ccc;">
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <img src="images/garantia.webp" alt="Garantia 60 dias" style="max-width: 100px;">
+
+      <h3 style="color: #003366;">60 DAYS MONEY BACK GUARANTEE 100% SATISFACTION GUARANTEED</h3>
+
+      <p style="font-size: 16px; color: #333; max-width: 600px;">
+       We offer a 100% Money Back Guarantee: 60 business days from the date of your original purchase. If you are not fully satisfied with our product or your results within the first 60 days, we will simply notify you by email and we will be happy to refund you in full within 48 hours.
+      </p>
+    </div>
+
+    <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px;">
+      <p style="color: #555;">© 2026 The Prosperity Code · All rights reserved</p>
+      <p style="margin-top: 10px;">
+        <a href="https://gemaacademia.online/privac" style="color: #003366; margin: 0 10px; text-decoration: none;">Privacy policy</a> |
+        <a href="https://gemaacademia.online/terminos" style="color: #003366; margin: 0 10px; text-decoration: none;">Terms and Conditions</a> |
+        <a href="https://gemaacademia.online/contact" style="color: #003366; margin: 0 10px; text-decoration: none;">Contacts</a> |
+        <a href="https://gemaacademia.online/responsabilidad" style="color: #003366; margin: 0 10px; text-decoration: none;">Disclaimer of liability</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

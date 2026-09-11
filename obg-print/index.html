@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thank You — The Celestial Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--void:#080514;--purple:#5A3E8A;--lavender:#B89FD8;--gold:#D4AF6A;--cream:#F5F0FF;--muted:#8B7BA8;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--void);color:var(--cream);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 90% 70% at 50% 10%,#1E0848 0%,var(--void) 65%);}
+  .card{position:relative;z-index:1;max-width:600px;width:90%;padding:4rem 3rem;border:1px solid rgba(212,175,106,0.2);background:rgba(8,5,20,0.7);text-align:center;animation:rise 1s cubic-bezier(.22,1,.36,1) both;}
+  .card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:var(--gold);opacity:0.5;}
+  .star-anim{width:70px;height:70px;border:1px solid rgba(212,175,106,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;font-size:26px;animation:pulse 3s ease-in-out infinite;}
+  .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.3em;color:var(--gold);margin-bottom:1rem;animation:fadeUp 0.8s 0.3s both;}
+  .headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:400;line-height:1.1;color:var(--cream);margin-bottom:0.6rem;animation:fadeUp 0.8s 0.5s both;}
+  .headline em{font-style:italic;color:var(--lavender);}
+  .subline{font-family:'Playfair Display',serif;font-size:clamp(0.95rem,2vw,1.2rem);font-style:italic;color:var(--muted);line-height:1.8;margin-bottom:2.5rem;animation:fadeUp 0.8s 0.65s both;}
+  .divider{display:flex;align-items:center;gap:1rem;margin:0 auto 2.5rem;max-width:280px;animation:fadeUp 0.8s 0.8s both;}
+  .div-line{flex:1;height:1px;background:rgba(212,175,106,0.2);}
+  .includes{list-style:none;text-align:left;margin:0 auto 2.5rem;max-width:380px;animation:fadeUp 0.8s 0.9s both;}
+  .includes li{display:flex;align-items:flex-start;gap:0.75rem;font-size:14px;color:var(--muted);padding:0.55rem 0;border-bottom:1px solid rgba(212,175,106,0.07);line-height:1.5;}
+  .includes li:last-child{border-bottom:none;}
+  .check{color:var(--gold);flex-shrink:0;margin-top:1px;}
+  .btn-wrap{animation:fadeUp 0.8s 1.05s both;}
+  .btn-access{display:inline-flex;align-items:center;gap:0.6rem;background:var(--gold);color:var(--void);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;letter-spacing:0.08em;padding:1.1rem 2.8rem;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+  .btn-access:hover{background:var(--lavender);color:var(--void);transform:translateY(-2px);}
+  .btn-arrow{font-size:16px;transition:transform 0.2s;}
+  .btn-access:hover .btn-arrow{transform:translateX(4px);}
+  .btn-note{margin-top:0.9rem;font-size:12px;color:var(--muted);animation:fadeUp 0.8s 1.15s both;}
+  .billing-notice{margin-top:2rem;padding:1rem 1.5rem;border:1px solid rgba(212,175,106,0.12);background:rgba(212,175,106,0.04);text-align:center;animation:fadeUp 0.8s 1.2s both;}
+  .billing-notice p{font-size:13px;font-weight:500;color:var(--gold);margin-bottom:0.4rem;}
+  .billing-notice small{font-size:12px;color:var(--muted);line-height:1.8;}
+  .footer-msg{margin-top:2.5rem;font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:rgba(139,123,168,0.5);animation:fadeUp 0.8s 1.3s both;}
+  .impressum-ty{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(212,175,106,0.1);animation:fadeUp 0.8s 1.35s both;}
+  .impressum-ty p{font-size:11px;color:var(--muted);line-height:1.9;}
+  .impressum-ty strong{color:var(--lavender);}
+  @keyframes rise{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,106,0.15);}50%{box-shadow:0 0 0 12px rgba(212,175,106,0);}}
+</style>
+</head>
+
+<body>
+<main class="card" role="main">
+  <div class="star-anim">✦</div>
+  <p class="eyebrow">Your Order Is Confirmed</p>
+  <h1 class="headline">Welcome to<br/><em>The Celestial Blueprint</em></h1>
+  <p class="subline">Your journey begins now. Everything you purchased is ready and waiting for you below.</p>
+  <div class="divider"><div class="div-line"></div><span style="color:var(--gold);font-size:12px;">✦</span><div class="div-line"></div></div>
+  <ul class="includes">
+    <li><span class="check">✦</span> Instant access to all purchased products</li>
+    <li><span class="check">✦</span> Instant PDF download — no shipping, available right now</li>
+    <li><span class="check">✦</span> 60-day money-back guarantee on all items</li>
+  </ul>
+  <div class="btn-wrap">
+    <a href="https://drive.google.com/drive/folders/1XcvANbtYh0_XIM9jZfibQvQkfxKp1769?hl=pt-br" class="btn-access">Access My Products <span class="btn-arrow">→</span></a>
+  </div>
+  <div class="billing-notice">
+    <p>Important billing information</p>
+  </div>
+  <p class="footer-msg">"The stars have always known the way. Now so do you."</p>
+  
+<footer style="position:relative; z-index:1; width:100%; background-color: var(--ink); border-top: 1px solid rgba(201,168,76,0.2); padding: 40px 20px; font-family: 'DM Sans', sans-serif; margin-top: 3rem;">
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <img src="images/garantia.webp" alt="Garantia 60 dias" style="max-width: 100px; opacity: 0.9;">
+
+      <h3 style="color: var(--gold); font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase;">60 Days Money Back Guarantee · 100% Satisfaction Guaranteed</h3>
+
+      <p style="font-size: 14px; color: var(--muted); max-width: 560px; line-height: 1.8;">
+        We offer a 100% Money Back Guarantee: 60 business days from the date of your original purchase. If you are not fully satisfied with our product or your results within the first 60 days, we will simply notify you by email and we will be happy to refund you in full within 48 hours.
+      </p>
+    </div>
+
+    <div style="margin-top: 32px; border-top: 1px solid rgba(201,168,76,0.12); padding-top: 24px;">
+      <p style="color: rgba(107,99,85,0.6); font-size: 12px;">© 2026 The Prosperity Code · All rights reserved</p>
+      <p style="margin-top: 10px; font-size: 12px;">
+        <a href="https://gemaacademia.online/privac-usd" style="color: var(--muted); margin: 0 10px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#6B6355'">Privacy Policy</a> |
+        <a href="https://gemaacademia.online/terminos-usd" style="color: var(--muted); margin: 0 10px; text-decoration: none;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#6B6355'">Terms and Conditions</a> |
+        <a href="https://gemaacademia.online/contact-usd" style="color: var(--muted); margin: 0 10px; text-decoration: none;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#6B6355'">Contacts</a> |
+        <a href="https://gemaacademia.online/responsabilidad-usd" style="color: var(--muted); margin: 0 10px; text-decoration: none;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#6B6355'">Disclaimer</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

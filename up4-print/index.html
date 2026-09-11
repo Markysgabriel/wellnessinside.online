@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Celestial Circle — 90-Day Group Coaching Program</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--void:#060412;--purple:#4A2E80;--lavender:#B89FD8;--gold:#D4AF6A;--cream:#F5F0FF;--muted:#8B7BA8;--bright:#8B5CF6;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--void);color:var(--cream);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 90% 55% at 50% 0%,#180640 0%,transparent 65%),radial-gradient(circle at 80% 60%,rgba(139,92,246,0.06) 0%,transparent 50%);}
+  .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;}
+  .premium-tag{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid rgba(212,175,106,0.4);color:var(--gold);font-size:11px;font-weight:500;letter-spacing:0.2em;padding:6px 22px;margin-bottom:2rem;animation:fadeUp 0.6s 0.1s both;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:400;line-height:1.05;color:var(--cream);margin-bottom:1rem;animation:fadeUp 0.8s 0.3s both;}
+  .hero-title em{font-style:italic;color:var(--lavender);}
+  .hero-sub{font-family:'Playfair Display',serif;font-size:clamp(1rem,2.5vw,1.4rem);font-style:italic;color:var(--muted);max-width:540px;line-height:1.8;margin-bottom:2rem;animation:fadeUp 0.8s 0.5s both;}
+  .plan-opts{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;animation:fadeUp 0.8s 0.6s both;}
+  .plan-opt{border:1px solid rgba(212,175,106,0.3);padding:1rem 1.5rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;min-width:150px;}
+  .plan-opt.selected,.plan-opt:hover{border-color:var(--gold);background:rgba(212,175,106,0.06);}
+  .plan-price{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--gold);}
+  .plan-label{font-size:10px;color:var(--muted);letter-spacing:0.12em;}
+  .btn{display:inline-block;background:var(--gold);color:var(--void);font-size:14px;font-weight:500;letter-spacing:0.1em;padding:1.1rem 3rem;text-decoration:none;transition:background 0.2s,transform 0.2s;animation:fadeUp 0.8s 0.7s both;border:none;cursor:pointer;}
+  .btn:hover{background:var(--lavender);color:var(--void);transform:translateY(-2px);}
+  .btn-skip{display:block;margin-top:1rem;font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;background:none;border:none;}
+  .divider{display:flex;align-items:center;gap:1.5rem;max-width:360px;margin:0 auto;padding:2.5rem 0;opacity:0.3;}
+  .div-line{flex:1;height:1px;background:var(--gold);}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:4rem 2rem;}
+  .tag{font-size:10px;font-weight:500;letter-spacing:0.3em;color:var(--gold);margin-bottom:1.2rem;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;line-height:1.2;color:var(--cream);margin-bottom:1.5rem;}
+  .sec-title em{font-style:italic;color:var(--lavender);}
+  .body{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:1.2rem;}
+  .inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin:2rem 0;}
+  .inc-card{border:1px solid rgba(212,175,106,0.12);padding:1.5rem;background:rgba(74,46,128,0.05);transition:border-color 0.2s;}
+  .inc-card:hover{border-color:rgba(212,175,106,0.35);}
+  .inc-icon{font-size:24px;margin-bottom:0.75rem;}
+  .inc-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.4rem;}
+  .inc-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+  .timeline{position:relative;padding-left:2rem;margin:2rem 0;}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(212,175,106,0.2);}
+  .t-item{position:relative;padding:0 0 2rem 2rem;}
+  .t-item::before{content:'';position:absolute;left:-4px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--gold);border:2px solid var(--void);}
+  .t-period{font-size:10px;color:var(--gold);letter-spacing:0.15em;margin-bottom:0.4rem;}
+  .t-title{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--cream);margin-bottom:0.3rem;}
+  .t-desc{font-size:14px;color:var(--muted);line-height:1.6;}
+  .price-box{border:1px solid rgba(212,175,106,0.3);padding:3rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(74,46,128,0.08) 0%,transparent 100%);position:relative;}
+  .price-box::before{content:'✦';position:absolute;top:-0.7rem;left:50%;transform:translateX(-50%);background:var(--void);padding:0 0.75rem;color:var(--gold);font-size:14px;}
+  .price-row{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+  .price-opt-box{border:1px solid rgba(212,175,106,0.25);padding:1.5rem 2rem;min-width:155px;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+  .price-opt-box.featured,.price-opt-box:hover{border-color:var(--gold);background:rgba(212,175,106,0.05);}
+  .po-label{font-size:10px;color:var(--muted);letter-spacing:0.15em;margin-bottom:0.5rem;}
+  .po-price{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:400;color:var(--gold);line-height:1;}
+  .po-note{font-size:12px;color:var(--muted);margin-top:0.3rem;}
+  .price-inc{text-align:left;max-width:380px;margin:0 auto 1.5rem;list-style:none;}
+  .price-inc li{font-size:14px;color:var(--muted);padding:0.4rem 0 0.4rem 1.6rem;position:relative;border-bottom:1px solid rgba(212,175,106,0.07);}
+  .price-inc li:last-child{border-bottom:none;}
+  .price-inc li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:9px;top:0.7rem;}
+  .guar{margin-top:1.5rem;font-size:12px;color:var(--muted);border-top:1px solid rgba(212,175,106,0.1);padding-top:1.5rem;}
+  .deliv{font-size:12px;color:var(--muted);margin-top:0.75rem;}
+  .deliv strong{color:var(--gold);}
+  .impressum{max-width:720px;margin:0 auto;padding:2rem 2rem 0;border-top:1px solid rgba(212,175,106,0.1);}
+  .impressum .itag{font-size:10px;font-weight:500;letter-spacing:0.25em;color:var(--gold);margin-bottom:0.75rem;}
+  .impressum p{font-size:12px;color:var(--muted);line-height:1.9;}
+  .impressum strong{color:var(--lavender);}
+  footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);line-height:2;position:relative;z-index:1;}
+  footer a{color:var(--muted);text-decoration:underline;}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s,transform 0.8s;}
+  .reveal.visible{opacity:1;transform:none;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="premium-tag">✦ Premium — Final Offer</div>
+  <h1 class="hero-title">The Celestial<br/><em>Circle</em></h1>
+  <p class="hero-sub">90 days of live group coaching, community, and accountability — the environment where lasting transformation becomes inevitable.</p>
+  <div class="plan-opts" id="hero-plans">
+    <div class="plan-opt selected" data-plan="full" onclick="selectPlan('full')"><p class="plan-price">$197</p><p class="plan-label">One-time · Full 90 days</p></div>
+    <div class="plan-opt" data-plan="monthly" onclick="selectPlan('monthly')"><p class="plan-price">$47<span style="font-size:1rem">/mo</span></p><p class="plan-label">Monthly · Cancel anytime</p></div>
+  </div>
+  <a href="#order" class="btn" id="hero-cta">Yes — Join The Celestial Circle · $197 →</a>
+  <button class="btn-skip">No thanks, I prefer to work alone</button>
+</section>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">The truth about transformation</p>
+  <h2 class="sec-title">Your environment<br/><em>shapes your reality.</em></h2>
+  <p class="body">You have the knowledge. You have the tools. But sustained transformation happens in community — surrounded by people who are actively doing the work, holding the same vision, and holding you accountable. The Celestial Circle is that container for 90 days.</p>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">What's included</p>
+  <h2 class="sec-title" style="text-align:center;">Everything to thrive<br/><em>in community.</em></h2>
+  <div class="inc-grid">
+    <div class="inc-card"><div class="inc-icon">📹</div><p class="inc-title">4 Live Sessions / Month</p><p class="inc-desc">Weekly 90-minute group coaching calls with deep dives, Q&A, and group activations.</p></div>
+    <div class="inc-card"><div class="inc-icon">🌐</div><p class="inc-title">Private Community</p><p class="inc-desc">Exclusive members-only space for daily connection, wins, accountability, and support.</p></div>
+    <div class="inc-card"><div class="inc-icon">🏆</div><p class="inc-title">Monthly Challenges</p><p class="inc-desc">Structured 60-day challenges designed to expand your identity and create real momentum.</p></div>
+    <div class="inc-card"><div class="inc-icon">💬</div><p class="inc-title">Direct Q&A Access</p><p class="inc-desc">Ask your specific questions and receive personalized guidance during each live session.</p></div>
+    <div class="inc-card"><div class="inc-icon">🎁</div><p class="inc-title">Exclusive Bonus Content</p><p class="inc-desc">Members-only masterclasses, meditations, and resources released throughout the 90 days.</p></div>
+    <div class="inc-card"><div class="inc-icon">♾️</div><p class="inc-title">All Session Replays</p><p class="inc-desc">Every live session recorded and available in your member library — never miss a moment.</p></div>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal">
+  <p class="tag">Your 90-day arc</p>
+  <h2 class="sec-title"><em>Month by month</em></h2>
+  <div class="timeline">
+    <div class="t-item"><p class="t-period">Month 1 — Days 1–30</p><p class="t-title">Foundation & Activation</p><p class="t-desc">Clear old patterns, establish daily practices, and anchor your new identity within the community container.</p></div>
+    <div class="t-item"><p class="t-period">Month 2 — Days 31–60</p><p class="t-title">Expansion & Flow</p><p class="t-desc">Move from intention to manifestation. Begin seeing real shifts in your reality as your energy aligns with abundance.</p></div>
+    <div class="t-item"><p class="t-period">Month 3 — Days 61–90</p><p class="t-title">Integration & Elevation</p><p class="t-desc">Solidify your new consciousness permanently. Create a sustainable system that keeps you in abundance flow for life.</p></div>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+
+<div class="wrap reveal" id="order">
+  <div class="price-box">
+    <p class="tag">Choose your plan</p>
+    <div class="price-row" id="order-plans">
+      <div class="price-opt-box featured" data-plan="full" onclick="selectPlan('full')" style="cursor:pointer">
+        <p class="po-label">Best value</p><p class="po-price">$197</p><p class="po-note">Full 90 days · One-time</p>
+      </div>
+      <div class="price-opt-box" data-plan="monthly" onclick="selectPlan('monthly')" style="cursor:pointer">
+        <p class="po-label">Monthly</p><p class="po-price">$47<span style="font-size:1.1rem">/mo</span></p><p class="po-note">Cancel anytime · Recurring commissions</p>
+      </div>
+    </div>
+    <ul class="price-inc">
+      <li>4 live group coaching sessions per month (12 total)</li>
+      <li>Private community access for 90 days</li>
+      <li>3 monthly structured challenges</li>
+      <li>Direct Q&A with the creator</li>
+      <li>All session replays in member library</li>
+      <li>Exclusive bonus masterclasses & content</li>
+      <li>PDF Welcome Guide — instant download upon purchase</li>
+    </ul>
+    <a href="#" class="btn" id="order-cta" style="display:inline-block;margin-top:1.5rem;">Join The Celestial Circle →</a>
+    <p class="deliv"><strong>Delivery:</strong> Live online program — access details sent by email immediately after purchase via Digistore24</p>
+    <p class="guar">🔒 60-day money-back guarantee. Full refund — no questions asked.</p>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><span style="color:var(--gold);">✦</span><div class="div-line"></div></div>
+<!-- Seção de Garantia -->
+ <footer style="background-color: #f4f4f4; padding: 40px 20px; font-family: Arial, sans-serif; border-top: 1px solid #ccc;">
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <img src="images/garantia.webp" alt="Garantia 60 dias" style="max-width: 100px;">
+
+      <h3 style="color: #003366;">60 DAYS MONEY BACK GUARANTEE 100% SATISFACTION GUARANTEED</h3>
+
+      <p style="font-size: 16px; color: #333; max-width: 600px;">
+       We offer a 100% Money Back Guarantee: 60 business days from the date of your original purchase. If you are not fully satisfied with our product or your results within the first 60 days, we will simply notify you by email and we will be happy to refund you in full within 48 hours.
+      </p>
+    </div>
+
+    <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px;">
+      <p style="color: #555;">© 2026 The Prosperity Code · All rights reserved</p>
+      <p style="margin-top: 10px;">
+        <a href="https://gemaacademia.online/privac" style="color: #003366; margin: 0 10px; text-decoration: none;">Privacy policy</a> |
+        <a href="https://gemaacademia.online/terminos" style="color: #003366; margin: 0 10px; text-decoration: none;">Terms and Conditions</a> |
+        <a href="https://gemaacademia.online/contact" style="color: #003366; margin: 0 10px; text-decoration: none;">Contacts</a> |
+        <a href="https://gemaacademia.online/responsabilidad" style="color: #003366; margin: 0 10px; text-decoration: none;">Disclaimer of liability</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
