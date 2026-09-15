@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Neural Edge — The Professional Memory System</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:      #080C10;
+  --surface: #0D1117;
+  --border:  #1C2333;
+  --neon:    #00C8FF;
+  --neon-dim:rgba(0,200,255,0.12);
+  --neon-glow:rgba(0,200,255,0.25);
+  --white:   #F0F4F8;
+  --gray:    #8B9BB4;
+  --dark:    #3A4558;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6;}
+
+/* Grid overlay */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,200,255,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,200,255,0.03) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+
+/* Glow top */
+body::after{
+  content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);
+  width:800px;height:400px;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(0,200,255,0.08) 0%,transparent 70%);
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:1;
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:6rem 2rem 5rem;
+}
+
+.metric-row{
+  display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;
+  margin-bottom:3rem;
+}
+.metric{text-align:center;}
+.metric-val{
+  font-family:'Space Mono',monospace;font-size:2.8rem;font-weight:700;
+  color:var(--neon);line-height:1;
+  text-shadow:0 0 20px rgba(0,200,255,0.4);
+}
+.metric-label{font-size:11px;color:var(--gray);letter-spacing:0.08em;margin-top:4px;}
+
+.hero-title{
+  font-size:clamp(2.8rem,7vw,6rem);font-weight:700;
+  line-height:1.0;letter-spacing:-0.02em;
+  color:var(--white);margin-bottom:1.2rem;
+}
+.hero-title .accent{color:var(--neon);}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.25rem);font-weight:300;
+  color:var(--gray);max-width:560px;margin:0 auto 2.5rem;line-height:1.8;
+}
+.cta-wrap{display:flex;flex-direction:column;align-items:center;gap:0.6rem;}
+.btn{
+  display:inline-block;background:var(--neon);color:var(--bg);
+  font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;
+  letter-spacing:0.04em;padding:1rem 2.8rem;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:box-shadow 0.2s,transform 0.2s;
+}
+.btn:hover{
+  box-shadow:0 0 30px rgba(0,200,255,0.5);
+  transform:translateY(-2px);
+}
+.btn-note{font-size:12px;color:var(--gray);}
+.btn-note strong{color:var(--neon);}
+
+/* ── Layout ── */
+.wrap{position:relative;z-index:1;max-width:740px;margin:0 auto;padding:5rem 2rem;}
+.wrap-wide{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:5rem 2rem;}
+
+.section-label{
+  font-family:'Space Mono',monospace;font-size:11px;
+  color:var(--neon);letter-spacing:0.15em;margin-bottom:1rem;
+}
+.section-title{
+  font-size:clamp(1.8rem,4vw,3rem);font-weight:700;
+  line-height:1.1;letter-spacing:-0.02em;
+  color:var(--white);margin-bottom:1.5rem;
+}
+.section-title .accent{color:var(--neon);}
+.body-text{font-size:15px;color:var(--gray);line-height:1.9;margin-bottom:1.2rem;}
+
+.rule{
+  border:none;border-top:1px solid var(--border);
+  margin:0;
+}
+
+/* ── Problem ── */
+.problem-list{list-style:none;margin:1.5rem 0;}
+.problem-list li{
+  font-size:15px;color:var(--gray);padding:0.9rem 0 0.9rem 1.8rem;
+  position:relative;border-bottom:1px solid var(--border);line-height:1.6;
+}
+.problem-list li:last-child{border-bottom:none;}
+.problem-list li::before{
+  content:'';position:absolute;left:0;top:1.2rem;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--border);border:1px solid var(--dark);
+}
+
+/* ── System ── */
+.system-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1px;background:var(--border);margin:2rem 0;
+}
+.system-card{
+  background:var(--surface);padding:1.8rem 1.5rem;
+  transition:background 0.2s;
+}
+.system-card:hover{background:#0F1520;}
+.sys-num{
+  font-family:'Space Mono',monospace;font-size:11px;
+  color:var(--neon);margin-bottom:0.75rem;letter-spacing:0.1em;
+}
+.sys-title{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.sys-desc{font-size:13px;color:var(--gray);line-height:1.6;}
+
+/* ── Terminal block ── */
+.terminal{
+  background:var(--surface);border:1px solid var(--border);
+  padding:1.5rem;margin:2rem 0;font-family:'Space Mono',monospace;
+  font-size:13px;color:var(--gray);line-height:1.8;
+}
+.terminal .prompt{color:var(--neon);}
+.terminal .output{color:var(--white);}
+
+/* ── For whom ── */
+.check-list{list-style:none;}
+.check-list li{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding:1rem 0;border-bottom:1px solid var(--border);
+  font-size:15px;color:var(--white);line-height:1.6;
+}
+.check-list li:last-child{border-bottom:none;}
+.chk{color:var(--neon);font-family:'Space Mono',monospace;flex-shrink:0;font-size:13px;}
+
+/* ── Deliverables ── */
+.deliv-list{list-style:none;border:1px solid var(--border);}
+.deliv-item{
+  display:flex;gap:1.5rem;align-items:flex-start;
+  padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);
+  transition:background 0.15s;
+}
+.deliv-item:last-child{border-bottom:none;}
+.deliv-item:hover{background:var(--neon-dim);}
+.deliv-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.deliv-body{}
+.deliv-title{font-weight:600;color:var(--white);margin-bottom:2px;}
+.deliv-desc{font-size:13px;color:var(--gray);line-height:1.5;}
+
+/* ── Pricing ── */
+.price-box{
+  border:1px solid var(--neon);
+  padding:3rem 2rem;text-align:center;
+  position:relative;
+  box-shadow:0 0 40px rgba(0,200,255,0.06);
+}
+.price-box::before{
+  content:'NEURAL EDGE';
+  position:absolute;top:-0.65rem;left:50%;transform:translateX(-50%);
+  background:var(--bg);padding:0 1rem;
+  font-family:'Space Mono',monospace;font-size:11px;
+  color:var(--neon);letter-spacing:0.15em;
+}
+.price-tag{
+  font-family:'Space Mono',monospace;
+  font-size:5.5rem;font-weight:700;color:var(--neon);
+  line-height:1;margin-bottom:0.5rem;
+  text-shadow:0 0 30px rgba(0,200,255,0.3);
+}
+.price-tag sup{font-size:2rem;vertical-align:super;}
+.price-was{font-size:14px;color:var(--dark);text-decoration:line-through;margin-bottom:0.3rem;}
+.price-desc{font-size:13px;color:var(--gray);margin-bottom:2rem;}
+.price-inc{text-align:left;max-width:380px;margin:0 auto 2rem;list-style:none;}
+.price-inc li{
+  font-size:14px;color:var(--gray);
+  padding:0.5rem 0 0.5rem 1.5rem;
+  position:relative;border-bottom:1px solid var(--border);
+}
+.price-inc li:last-child{border-bottom:none;}
+.price-inc li::before{
+  content:'→';position:absolute;left:0;
+  color:var(--neon);font-family:'Space Mono',monospace;font-size:11px;top:0.6rem;
+}
+.delivery-badge{font-size:12px;color:var(--gray);margin-top:0.75rem;}
+.delivery-badge strong{color:var(--neon);}
+.guarantee{
+  margin-top:1.5rem;font-size:12px;color:var(--gray);
+  border-top:1px solid var(--border);padding-top:1.5rem;
+}
+
+/* ── Impressum ── */
+.impressum{
+  max-width:740px;margin:0 auto;
+  padding:2rem 2rem 0;border-top:1px solid var(--border);
+  position:relative;z-index:1;
+}
+.impressum p{font-size:12px;color:var(--dark);line-height:1.9;}
+.impressum strong{color:var(--gray);}
+
+footer{
+  text-align:center;padding:2rem;font-size:12px;
+  color:var(--dark);line-height:2;position:relative;z-index:1;
+}
+footer a{color:var(--dark);text-decoration:underline;}
+
+/* ── Reveal ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s,transform 0.7s;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:480px){
+  .metric-val{font-size:2rem;}
+  .metric-row{gap:1.5rem;}
+  .price-tag{font-size:4rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="metric-row">
+    <div class="metric"><div class="metric-val">3×</div><div class="metric-label">Faster Retention</div></div>
+    <div class="metric"><div class="metric-val">21</div><div class="metric-label">Day Training</div></div>
+    <div class="metric"><div class="metric-val">7</div><div class="metric-label">Core Systems</div></div>
+  </div>
+
+  <h1 class="hero-title">
+    Your memory is<br/>
+    a <span class="accent">trainable skill.</span><br/>
+    Start training it.
+  </h1>
+
+  <p class="hero-sub">
+    Neural Edge is a science-backed memory and cognitive performance system for professionals who need to learn faster, retain more, and think with greater clarity under pressure.
+  </p>
+
+  <div class="cta-wrap">
+    <a href="#order" class="btn">Get Neural Edge — $27</a>
+    <span class="btn-note">Instant PDF download · <strong>60-day</strong> money-back guarantee</span>
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- PROBLEM -->
+<div class="wrap reveal">
+  <p class="section-label">// THE PROBLEM</p>
+  <h2 class="section-title">You're not forgetting<br/>because of age.<br/>You're forgetting because<br/>nobody taught you <span class="accent">how to remember.</span></h2>
+  <ul class="problem-list">
+    <li>You read something important and can't recall it 48 hours later</li>
+    <li>Meetings, names, and key decisions slip through without trace</li>
+    <li>You learn something new and it's gone before you can use it</li>
+    <li>Your to-do list is your memory — remove it and everything collapses</li>
+    <li>You know the information is in there. You just can't access it when it counts.</li>
+  </ul>
+</div>
+
+<hr class="rule"/>
+
+<!-- TERMINAL BLOCK -->
+<div class="wrap reveal">
+  <div class="terminal">
+    <div><span class="prompt">$ </span><span class="output">diagnose memory_performance --mode professional</span></div>
+    <div style="margin-top:0.5rem;color:#3A4558;">// Running cognitive audit...</div>
+    <div style="margin-top:0.5rem;"><span class="prompt">→ </span><span class="output">Input encoding: <span style="color:#FF6B6B;">suboptimal</span></span></div>
+    <div><span class="prompt">→ </span><span class="output">Retrieval architecture: <span style="color:#FF6B6B;">unstructured</span></span></div>
+    <div><span class="prompt">→ </span><span class="output">Spaced repetition: <span style="color:#FF6B6B;">not active</span></span></div>
+    <div><span class="prompt">→ </span><span class="output">Working memory load: <span style="color:#FFB347;">high</span></span></div>
+    <div style="margin-top:0.5rem;"><span class="prompt">→ </span><span class="output">Recommended action: <span style="color:var(--neon);">install Neural Edge</span></span></div>
+  </div>
+  <p class="body-text">The problem is not your brain. The problem is the absence of a system. Neural Edge gives you that system — built on the same cognitive science principles used by memory athletes, elite performers, and the world's fastest learners.</p>
+</div>
+
+<hr class="rule"/>
+
+<!-- THE SYSTEM -->
+<div class="wrap-wide reveal">
+  <p class="section-label" style="text-align:center;">// THE SYSTEM</p>
+  <h2 class="section-title" style="text-align:center;">7 cognitive systems.<br/><span class="accent">One complete architecture.</span></h2>
+  <div class="system-grid">
+    <div class="system-card">
+      <p class="sys-num">SYS.01</p>
+      <p class="sys-title">Deep Encoding</p>
+      <p class="sys-desc">How to process information so it sticks the first time — no re-reading required.</p>
+    </div>
+    <div class="system-card">
+      <p class="sys-num">SYS.02</p>
+      <p class="sys-title">Active Retrieval</p>
+      <p class="sys-desc">The counterintuitive practice that strengthens memory every time you use it.</p>
+    </div>
+    <div class="system-card">
+      <p class="sys-num">SYS.03</p>
+      <p class="sys-title">Spaced Repetition</p>
+      <p class="sys-desc">The algorithm your brain already uses — and how to work with it deliberately.</p>
+    </div>
+    <div class="system-card">
+      <p class="sys-num">SYS.04</p>
+      <p class="sys-title">Working Memory</p>
+      <p class="sys-desc">How to expand your cognitive bandwidth and hold more without dropping anything.</p>
+    </div>
+    <div class="system-card">
+      <p class="sys-num">SYS.05</p>
+      <p class="sys-title">Memory Palaces</p>
+      <p class="sys-desc">The 2,500-year-old technique adapted for modern professional knowledge work.</p>
+    </div>
+    <div class="system-card">
+      <p class="sys-num">SYS.06</p>
+      <p class="sys-title">Mental Models</p>
+      <p class="sys-desc">How to organize information structurally so retrieval becomes effortless.</p>
+    </div>
+    <div class="system-card">
+      <p class="sys-num">SYS.07</p>
+      <p class="sys-title">Cognitive Maintenance</p>
+      <p class="sys-desc">Sleep, nutrition, and daily habits that protect and sharpen your memory long-term.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="rule"/>
+
+<!-- FOR WHOM -->
+<div class="wrap reveal">
+  <p class="section-label">// WHO THIS IS FOR</p>
+  <ul class="check-list">
+    <li><span class="chk">[✓]</span> Professionals who need to retain large volumes of information quickly</li>
+    <li><span class="chk">[✓]</span> Managers and executives who make decisions from memory under pressure</li>
+    <li><span class="chk">[✓]</span> Anyone learning new skills, languages, or fields and wanting to accelerate retention</li>
+    <li><span class="chk">[✓]</span> People who feel their mental sharpness has declined and want to reverse it</li>
+    <li><span class="chk">[✓]</span> High performers who already optimize their body and want to optimize their mind</li>
+  </ul>
+</div>
+
+<hr class="rule"/>
+
+<!-- DELIVERABLES -->
+<div class="wrap reveal">
+  <p class="section-label">// WHAT'S INSIDE</p>
+  <h2 class="section-title">Everything in the<br/><span class="accent">Neural Edge system.</span></h2>
+  <ul class="deliv-list">
+    <li class="deliv-item"><span class="deliv-icon">🧠</span><div class="deliv-body"><p class="deliv-title">Neural Edge — Full Guide (PDF, 180+ pages)</p><p class="deliv-desc">The complete memory and cognitive performance system across 7 chapters with exercises and case studies.</p></div></li>
+    <li class="deliv-item"><span class="deliv-icon">⚡</span><div class="deliv-body"><p class="deliv-title">7 System Frameworks with step-by-step instructions</p><p class="deliv-desc">Each system explained clearly with practical implementation guides you can use immediately.</p></div></li>
+    <li class="deliv-item"><span class="deliv-icon">📋</span><div class="deliv-body"><p class="deliv-title">21-Day Neural Activation Plan</p><p class="deliv-desc">A structured daily practice plan that builds all 7 systems progressively over three weeks.</p></div></li>
+    <li class="deliv-item"><span class="deliv-icon">📓</span><div class="deliv-body"><p class="deliv-title">Full Exercise Workbook with practice space</p><p class="deliv-desc">Guided exercises, self-assessment tools, and reflection prompts for every system.</p></div></li>
+    <li class="deliv-item"><span class="deliv-icon">🔬</span><div class="deliv-body"><p class="deliv-title">Neuroscience Reference Guide</p><p class="deliv-desc">The science behind every technique — so you understand why it works, not just what to do.</p></div></li>
+  </ul>
+</div>
+
+<hr class="rule"/>
+
+<!-- PRICING -->
+<div class="wrap reveal" id="order">
+  <div class="price-box">
+    <p class="price-was">Value: $97</p>
+    <p class="price-tag"><sup>$</sup>27</p>
+    <p class="price-desc">One-time payment · Instant access · No subscriptions</p>
+    <ul class="price-inc">
+      <li>Neural Edge — Full Guide (PDF, 180+ pages)</li>
+      <li>7 System Frameworks with implementation guides</li>
+      <li>21-Day Neural Activation Plan</li>
+      <li>Full Exercise Workbook with practice space</li>
+      <li>Neuroscience Reference Guide</li>
+      <li>Instant digital download via Digistore24</li>
+    </ul>
+    <p class="delivery-badge"><strong>Delivery:</strong> Digital product — instant PDF download via Digistore24 · No shipping required</p>
+    <a href="#" class="btn" style="display:inline-block;margin-top:1.5rem;">Install Neural Edge — $27 →</a>
+    <p class="guarantee">🔒 60-day money-back guarantee. If you don't see a measurable improvement in your retention and recall, full refund — no questions asked.</p>
+    <p style="font-size:11px;color:var(--dark);margin-top:1rem;">Results may vary. Testimonials and examples are not guarantees of individual outcomes. This product is for educational purposes only.</p>
+  </div>
+</div>
+
+<hr class="rule" style="margin-top:3rem;"/>
+
+<!-- Seção de Garantia -->
+ <footer style="background-color: #f4f4f4; padding: 40px 20px; font-family: Arial, sans-serif; border-top: 1px solid #ccc;">
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <img src="images/garantia.webp" alt="Garantia 60 dias" style="max-width: 100px;">
+
+      <h3 style="color: #003366;">60 DAYS MONEY BACK GUARANTEE 100% SATISFACTION GUARANTEED</h3>
+
+      <p style="font-size: 16px; color: #333; max-width: 600px;">
+       We offer a 100% Money Back Guarantee: 60 business days from the date of your original purchase. If you are not fully satisfied with our product or your results within the first 60 days, we will simply notify you by email and we will be happy to refund you in full within 48 hours.
+      </p>
+    </div>
+
+    <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px;">
+      <p style="color: #555;">© 2026 Neural Edge · All rights reserved</p>
+      <p style="margin-top: 10px;">
+        <a href="https://wellnessinside.online/privac" style="color: #003366; margin: 0 10px; text-decoration: none;">Privacy policy</a> |
+        <a href="https://wellnessinside.online/terminos" style="color: #003366; margin: 0 10px; text-decoration: none;">Terms and Conditions</a> |
+        <a href="https://wellnessinside.online/contact" style="color: #003366; margin: 0 10px; text-decoration: none;">Contacts</a> |
+        <a href="https://wellnessinside.online/responsabilidad" style="color: #003366; margin: 0 10px; text-decoration: none;">Disclaimer of liability</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(e=>e.forEach(r=>{if(r.isIntersecting)r.target.classList.add('visible');}),{threshold:0.08});
+reveals.forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
