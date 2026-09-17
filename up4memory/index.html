@@ -4,183 +4,1285 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Neural Elite Circle — 90-Day Group Coaching</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--bg:#080C10;--surface:#0D1117;--border:#1C2333;--neon:#00C8FF;--neon-dim:rgba(0,200,255,0.1);--white:#F0F4F8;--gray:#8B9BB4;--dark:#3A4558;}
-html{scroll-behavior:smooth;}
-body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6;}
-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,200,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,255,0.03) 1px,transparent 1px);background-size:60px 60px;}
-.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;}
-.bump{display:inline-block;border:1px solid var(--neon);color:var(--neon);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.15em;padding:6px 20px;margin-bottom:2rem;}
-.hero-title{font-size:clamp(2.5rem,6vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.02em;color:var(--white);margin-bottom:1rem;}
-.hero-title .accent{color:var(--neon);}
-.hero-sub{font-size:clamp(1rem,2vw,1.2rem);font-weight:300;color:var(--gray);max-width:500px;margin:0 auto 2.5rem;line-height:1.8;}
-.btn{display:inline-block;background:var(--neon);color:var(--bg);font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.04em;padding:1rem 2.8rem;text-decoration:none;border:none;cursor:pointer;transition:box-shadow 0.2s,transform 0.2s;}
-.btn:hover{box-shadow:0 0 30px rgba(0,200,255,0.5);transform:translateY(-2px);}
-.btn-skip{display:block;margin-top:1rem;font-size:12px;color:var(--dark);text-decoration:underline;cursor:pointer;background:none;border:none;}
-.rule{border:none;border-top:1px solid var(--border);margin:0;}
-.wrap{position:relative;z-index:1;max-width:740px;margin:0 auto;padding:5rem 2rem;}
-.lbl{font-family:'Space Mono',monospace;font-size:11px;color:var(--neon);letter-spacing:0.15em;margin-bottom:1rem;}
-.sec-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--white);margin-bottom:1.5rem;}
-.sec-title .accent{color:var(--neon);}
-.body{font-size:15px;color:var(--gray);line-height:1.9;margin-bottom:1.2rem;}
-.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border);margin:2rem 0;}
-.tool{background:var(--surface);padding:1.8rem 1.5rem;transition:background 0.15s;}
-.tool:hover{background:var(--neon-dim);}
-.tool-icon{font-size:24px;margin-bottom:0.75rem;}
-.tool-title{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.4rem;}
-.tool-desc{font-size:13px;color:var(--gray);line-height:1.6;}
-.mod-list{list-style:none;}
-.mod-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border);}
-.mod-item:last-child{border-bottom:none;}
-.mod-num{font-family:'Space Mono',monospace;font-size:2rem;font-weight:700;color:var(--border);line-height:1;flex-shrink:0;width:50px;}
-.mod-title{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:4px;}
-.mod-desc{font-size:14px;color:var(--gray);line-height:1.7;}
-.inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);margin:2rem 0;}
-.inc-card{background:var(--surface);padding:1.5rem;transition:background 0.15s;}
-.inc-card:hover{background:var(--neon-dim);}
-.inc-icon{font-size:22px;margin-bottom:0.75rem;}
-.inc-title{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:4px;}
-.inc-desc{font-size:13px;color:var(--gray);line-height:1.6;}
-.plan-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:2rem 0;}
-.plan{border:1px solid var(--border);padding:1.5rem 2rem;text-align:center;min-width:150px;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
-.plan.featured,.plan:hover{border-color:var(--neon);background:var(--neon-dim);}
-.plan-price{font-family:'Space Mono',monospace;font-size:2.5rem;font-weight:700;color:var(--neon);line-height:1;}
-.plan-label{font-size:10px;color:var(--gray);letter-spacing:0.12em;margin-top:4px;}
-.price-box{border:1px solid var(--neon);padding:3rem 2rem;text-align:center;position:relative;box-shadow:0 0 40px rgba(0,200,255,0.06);}
-.price-tag{font-family:'Space Mono',monospace;font-size:5rem;font-weight:700;color:var(--neon);line-height:1;margin-bottom:0.5rem;text-shadow:0 0 30px rgba(0,200,255,0.3);}
-.price-tag sup{font-size:2rem;vertical-align:super;}
-.price-desc{font-size:13px;color:var(--gray);margin-bottom:2rem;}
-.price-inc{text-align:left;max-width:360px;margin:0 auto 1.5rem;list-style:none;}
-.price-inc li{font-size:14px;color:var(--gray);padding:0.5rem 0 0.5rem 1.5rem;position:relative;border-bottom:1px solid var(--border);}
-.price-inc li:last-child{border-bottom:none;}
-.price-inc li::before{content:'→';position:absolute;left:0;color:var(--neon);font-family:'Space Mono',monospace;font-size:11px;top:0.6rem;}
-.deliv{font-size:12px;color:var(--gray);margin-top:0.75rem;}
-.deliv strong{color:var(--neon);}
-.guar{margin-top:1.5rem;font-size:12px;color:var(--gray);border-top:1px solid var(--border);padding-top:1.5rem;}
-.impressum{max-width:740px;margin:0 auto;padding:2rem 2rem 0;border-top:1px solid var(--border);position:relative;z-index:1;}
-.impressum p{font-size:12px;color:var(--dark);line-height:1.9;}
-.impressum strong{color:var(--gray);}
-footer{text-align:center;padding:2rem;font-size:12px;color:var(--dark);line-height:2;position:relative;z-index:1;}
-footer a{color:var(--dark);text-decoration:underline;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s,transform 0.7s;}
-.reveal.visible{opacity:1;transform:none;}
-.timeline{position:relative;padding-left:2rem;}
-.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border);}
-.t-item{position:relative;padding:0 0 2rem 2rem;}
-.t-item::before{content:'';position:absolute;left:-4px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--neon);border:2px solid var(--bg);}
-.t-period{font-family:'Space Mono',monospace;font-size:10px;color:var(--neon);letter-spacing:0.12em;margin-bottom:4px;}
-.t-title{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:4px;}
-.t-desc{font-size:14px;color:var(--gray);line-height:1.6;}
+
+<style>
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --bg:#080C10;
+  --surface:#0D1117;
+  --border:#1C2333;
+  --neon:#00C8FF;
+  --neon-dim:rgba(0,200,255,0.1);
+  --white:#F0F4F8;
+  --gray:#8B9BB4;
+  --dark:#3A4558;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,200,255,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,200,255,0.03) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+
+.hero{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:6rem 2rem 4rem;
+}
+
+.bump{
+  display:inline-block;
+  border:1px solid var(--neon);
+  color:var(--neon);
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.15em;
+  padding:6px 20px;
+  margin-bottom:2rem;
+}
+
+.hero-title{
+  font-size:clamp(2.5rem,6vw,5.5rem);
+  font-weight:700;
+  line-height:1;
+  letter-spacing:-0.02em;
+  color:var(--white);
+  margin-bottom:1rem;
+}
+
+.hero-title .accent{
+  color:var(--neon);
+}
+
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.2rem);
+  font-weight:300;
+  color:var(--gray);
+  max-width:500px;
+  margin:0 auto 2.5rem;
+  line-height:1.8;
+}
+
+
+/* ========================================
+   BOTÃO PRINCIPAL
+======================================== */
+
+.btn{
+  display:inline-block;
+  background:var(--neon);
+  color:var(--bg);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:0.04em;
+  padding:1rem 2.8rem;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.btn:hover{
+  box-shadow:0 0 30px rgba(0,200,255,0.5);
+  transform:translateY(-2px);
+}
+
+
+/* ========================================
+   BOTÃO VERMELHO "NO THANKS"
+======================================== */
+
+.btn-no{
+  display:inline-block;
+  margin-top:12px;
+  background:#d71920;
+  color:#ffffff;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  padding:0.85rem 2rem;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.btn-no:hover{
+  background:#b51218;
+  color:#ffffff;
+  transform:translateY(-2px);
+  box-shadow:0 0 20px rgba(215,25,32,0.35);
+}
+
+
+/* ========================================
+   ESTRUTURA
+======================================== */
+
+.rule{
+  border:none;
+  border-top:1px solid var(--border);
+  margin:0;
+}
+
+.wrap{
+  position:relative;
+  z-index:1;
+  max-width:740px;
+  margin:0 auto;
+  padding:5rem 2rem;
+}
+
+.lbl{
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  color:var(--neon);
+  letter-spacing:0.15em;
+  margin-bottom:1rem;
+}
+
+.sec-title{
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  color:var(--white);
+  margin-bottom:1.5rem;
+}
+
+.sec-title .accent{
+  color:var(--neon);
+}
+
+.body{
+  font-size:15px;
+  color:var(--gray);
+  line-height:1.9;
+  margin-bottom:1.2rem;
+}
+
+
+/* ========================================
+   CARDS
+======================================== */
+
+.inc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1px;
+  background:var(--border);
+  margin:2rem 0;
+}
+
+.inc-card{
+  background:var(--surface);
+  padding:1.5rem;
+  transition:background 0.15s;
+}
+
+.inc-card:hover{
+  background:var(--neon-dim);
+}
+
+.inc-icon{
+  font-size:22px;
+  margin-bottom:0.75rem;
+}
+
+.inc-title{
+  font-size:1rem;
+  font-weight:600;
+  color:var(--white);
+  margin-bottom:4px;
+}
+
+.inc-desc{
+  font-size:13px;
+  color:var(--gray);
+  line-height:1.6;
+}
+
+
+/* ========================================
+   PLANOS
+======================================== */
+
+.plan-row{
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:2rem 0;
+}
+
+.plan{
+  border:1px solid var(--border);
+  padding:1.5rem 2rem;
+  text-align:center;
+  min-width:150px;
+  cursor:pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.plan.featured,
+.plan:hover{
+  border-color:var(--neon);
+  background:var(--neon-dim);
+}
+
+.plan-price{
+  font-family:'Space Mono',monospace;
+  font-size:2.5rem;
+  font-weight:700;
+  color:var(--neon);
+  line-height:1;
+}
+
+.plan-label{
+  font-size:10px;
+  color:var(--gray);
+  letter-spacing:0.12em;
+  margin-top:4px;
+}
+
+
+/* ========================================
+   BOX PREÇO
+======================================== */
+
+.price-box{
+  border:1px solid var(--neon);
+  padding:3rem 2rem;
+  text-align:center;
+  position:relative;
+  box-shadow:0 0 40px rgba(0,200,255,0.06);
+}
+
+.price-inc{
+  text-align:left;
+  max-width:360px;
+  margin:0 auto 1.5rem;
+  list-style:none;
+}
+
+.price-inc li{
+  font-size:14px;
+  color:var(--gray);
+  padding:0.5rem 0 0.5rem 1.5rem;
+  position:relative;
+  border-bottom:1px solid var(--border);
+}
+
+.price-inc li:last-child{
+  border-bottom:none;
+}
+
+.price-inc li::before{
+  content:'→';
+  position:absolute;
+  left:0;
+  color:var(--neon);
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  top:0.6rem;
+}
+
+.deliv{
+  font-size:12px;
+  color:var(--gray);
+  margin-top:0.75rem;
+}
+
+.deliv strong{
+  color:var(--neon);
+}
+
+.guar{
+  margin-top:1.5rem;
+  font-size:12px;
+  color:var(--gray);
+  border-top:1px solid var(--border);
+  padding-top:1.5rem;
+}
+
+
+/* ========================================
+   TIMELINE
+======================================== */
+
+.timeline{
+  position:relative;
+  padding-left:2rem;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:var(--border);
+}
+
+.t-item{
+  position:relative;
+  padding:0 0 2rem 2rem;
+}
+
+.t-item::before{
+  content:'';
+  position:absolute;
+  left:-4px;
+  top:6px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--neon);
+  border:2px solid var(--bg);
+}
+
+.t-period{
+  font-family:'Space Mono',monospace;
+  font-size:10px;
+  color:var(--neon);
+  letter-spacing:0.12em;
+  margin-bottom:4px;
+}
+
+.t-title{
+  font-size:1.1rem;
+  font-weight:600;
+  color:var(--white);
+  margin-bottom:4px;
+}
+
+.t-desc{
+  font-size:14px;
+  color:var(--gray);
+  line-height:1.6;
+}
+
+
+/* ========================================
+   ANIMAÇÕES
+======================================== */
+
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:
+    opacity 0.7s,
+    transform 0.7s;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
 @media(max-width:600px){
-  .hero{min-height:auto;padding:4rem 1.25rem 3rem;}
-  .hero-title{font-size:clamp(2.25rem,12vw,3.5rem);}
-  .hero-sub{font-size:1rem;line-height:1.65;}
-  .btn{width:100%;max-width:360px;padding:1rem 1.25rem;}
-  .wrap{padding:3.5rem 1.25rem;}
-  .tool-grid,.inc-grid{grid-template-columns:1fr;}
-  .mod-item{gap:0.75rem;}
-  .mod-num{width:38px;font-size:1.6rem;}
-  .plan-row,.hero>div[style*="display:flex"]{width:100%;}
-  .plan{width:100%;min-width:0;padding:1.25rem 1rem;}
-  .price-box{padding:2.75rem 1.15rem 2rem;}
-  .price-tag{font-size:4rem;}
-  .price-box>.btn{font-size:14px;}
-  .timeline{padding-left:1.25rem;}
-  .t-item{padding-left:1.25rem;}
+
+  .hero{
+    min-height:auto;
+    padding:4rem 1.25rem 3rem;
+  }
+
+  .hero-title{
+    font-size:clamp(2.25rem,12vw,3.5rem);
+  }
+
+  .hero-sub{
+    font-size:1rem;
+    line-height:1.65;
+  }
+
+  .btn,
+  .btn-no{
+    width:100%;
+    max-width:360px;
+    padding:1rem 1.25rem;
+  }
+
+  .wrap{
+    padding:3.5rem 1.25rem;
+  }
+
+  .inc-grid{
+    grid-template-columns:1fr;
+  }
+
+  .plan-row,
+  .hero>div[style*="display:flex"]{
+    width:100%;
+  }
+
+  .plan{
+    width:100%;
+    min-width:0;
+    padding:1.25rem 1rem;
+  }
+
+  .price-box{
+    padding:2.75rem 1.15rem 2rem;
+  }
+
+  .timeline{
+    padding-left:1.25rem;
+  }
+
+  .t-item{
+    padding-left:1.25rem;
+  }
+
 }
 </style>
+
+  <script src="https://www.digistore24-scripts.com/service/digistore.js"></script>
+
+<script>digistoreUpsell()</script>
+  
 </head>
+
+
 <body>
+
+
+<!-- ========================================
+     HERO
+======================================== -->
+
 <section class="hero">
-  <div class="bump">// PREMIUM — FINAL OFFER</div>
-  <h1 class="hero-title">90 days.<br/><span class="accent">Live coaching.<br/>Real accountability.</span></h1>
-  <p class="hero-sub">Neural Elite Circle is a 90-day live group coaching program for professionals who want structured support, direct feedback, and a community of peers actively building elite cognitive performance.</p>
-  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;">
-    <div class="plan featured" data-plan="full" onclick="selectPlan('full')"><p class="plan-price">$197</p><p class="plan-label">One-time · Full 90 days</p></div>
-    <div class="plan" data-plan="monthly" onclick="selectPlan('monthly')"><p class="plan-price">$47<span style="font-size:1.1rem">/mo</span></p><p class="plan-label">Monthly · Cancel anytime</p></div>
+
+  <div class="bump">
+    // PREMIUM — FINAL OFFER
   </div>
-  <a href="#order" class="btn" id="hero-cta">Join Neural Elite Circle — $197 →</a>
-  <button class="btn-skip">No thanks, I prefer to train alone</button>
-</section>
-<hr class="rule"/>
-<div class="wrap reveal">
-  <p class="lbl">// WHAT'S INCLUDED</p>
-  <h2 class="sec-title">Everything you need<br/><span class="accent">to go all the way.</span></h2>
-  <div class="inc-grid">
-    <div class="inc-card"><div class="inc-icon">📹</div><p class="inc-title">12 Live Sessions</p><p class="inc-desc">Weekly 90-minute group coaching calls with direct instruction, Q&A, and live memory exercises.</p></div>
-    <div class="inc-card"><div class="inc-icon">🌐</div><p class="inc-title">Private Community</p><p class="inc-desc">Exclusive members-only space for daily practice sharing, accountability, and peer support.</p></div>
-    <div class="inc-card"><div class="inc-icon">🏆</div><p class="inc-title">Monthly Challenges</p><p class="inc-desc">Three 60-day structured training challenges — one per month — with measurable milestones.</p></div>
-    <div class="inc-card"><div class="inc-icon">💬</div><p class="inc-title">Direct Q&A Access</p><p class="inc-desc">Ask your specific questions and get direct answers during every live session.</p></div>
-    <div class="inc-card"><div class="inc-icon">♾️</div><p class="inc-title">All Session Replays</p><p class="inc-desc">Every session recorded and available in the member library within 24 hours.</p></div>
-    <div class="inc-card"><div class="inc-icon">📋</div><p class="inc-title">PDF Welcome Guide</p><p class="inc-desc">Complete program overview, session schedule, and quick-start checklist — delivered instantly.</p></div>
-  </div>
-</div>
-<hr class="rule"/>
-<div class="wrap reveal">
-  <p class="lbl">// 90-DAY STRUCTURE</p>
-  <h2 class="sec-title">Three phases.<br/><span class="accent">Progressive mastery.</span></h2>
-  <div class="timeline">
-    <div class="t-item"><p class="t-period">MONTH 1 — DAYS 1–30</p><p class="t-title">Foundation & Installation</p><p class="t-desc">Install all 7 Neural Edge systems with live coaching support. Build the daily practice habit. Benchmark your starting performance.</p></div>
-    <div class="t-item"><p class="t-period">MONTH 2 — DAYS 31–60</p><p class="t-title">Application & Speed</p><p class="t-desc">Apply your systems to real professional challenges. Increase speed and automaticity. Measure and celebrate performance gains.</p></div>
-    <div class="t-item"><p class="t-period">MONTH 3 — DAYS 61–90</p><p class="t-title">Mastery & Maintenance</p><p class="t-desc">Lock in your new cognitive baseline. Design your long-term maintenance system. Graduate with measurable, documented improvement.</p></div>
-  </div>
-</div>
-<hr class="rule"/>
-<div class="wrap reveal" id="order">
-  <div class="price-box">
-    <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--neon);letter-spacing:0.15em;position:absolute;top:-0.65rem;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 1rem;">NEURAL ELITE CIRCLE</div>
-    <div class="plan-row">
-      <div class="plan featured" data-plan="full" onclick="selectPlan('full')"><p class="plan-price">$197</p><p class="plan-label">Full 90 days · One-time</p></div>
-      <div class="plan" data-plan="monthly" onclick="selectPlan('monthly')"><p class="plan-price">$47<span style="font-size:1rem">/mo</span></p><p class="plan-label">Monthly · Cancel anytime</p></div>
+
+  <h1 class="hero-title">
+
+    90 days.<br/>
+
+    <span class="accent">
+      Live coaching.<br/>
+      Real accountability.
+    </span>
+
+  </h1>
+
+  <p class="hero-sub">
+
+    Neural Elite Circle is a 90-day live group coaching program for
+    professionals who want structured support, direct feedback,
+    and a community of peers actively building elite cognitive performance.
+
+  </p>
+
+
+  <!-- PLANOS -->
+
+  <div style="
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:2rem;
+  ">
+
+    <div
+      class="plan featured"
+      data-plan="full"
+      onclick="selectPlan('full')"
+    >
+
+      <p class="plan-price">
+        $197
+      </p>
+
+      <p class="plan-label">
+        One-time · Full 90 days
+      </p>
+
     </div>
-    <ul class="price-inc">
-      <li>12 live group coaching sessions (90 min each)</li>
-      <li>Private community access for 90 days</li>
-      <li>3 monthly structured challenges</li>
-      <li>Direct Q&A with instructor</li>
-      <li>All session replays in member library</li>
-      <li>PDF Welcome Guide — instant download</li>
-    </ul>
-    <p class="deliv"><strong>Delivery:</strong> Live online program — access details sent by email after purchase via Digistore24</p>
-    <a href="#" class="btn" id="order-cta" style="display:inline-block;margin-top:1.5rem;">Join Neural Elite Circle — $197 →</a>
-    <p class="guar">🔒 60-day money-back guarantee on all purchases.</p>
-    <p style="font-size:11px;color:var(--dark);margin-top:1rem;">Results may vary. Educational purposes only. Digistore24 is the authorized reseller.<br/><strong>Support:</strong> blueprintsupport10@gmail.com</p>
+
+
+    <div
+      class="plan"
+      data-plan="monthly"
+      onclick="selectPlan('monthly')"
+    >
+
+      <p class="plan-price">
+
+        $47<span style="font-size:1.1rem">/mo</span>
+
+      </p>
+
+      <p class="plan-label">
+        Monthly · Cancel anytime
+      </p>
+
+    </div>
+
   </div>
+
+
+  <!-- BOTÃO SIM -->
+
+  <a
+    href="https://www.checkout-ds24.com/answer/yes?template=light&product=734565"
+    class="btn"
+    id="hero-cta"
+  >
+    Join Neural Elite Circle — $197 →
+  </a>
+
+
+  <!-- BOTÃO NÃO -->
+
+  <a
+    href="https://www.checkout-ds24.com/answer/no"
+    class="btn-no"
+  >
+    No thanks, I prefer to train alone
+  </a>
+
+</section>
+
+
+<hr class="rule"/>
+
+
+<!-- ========================================
+     O QUE ESTÁ INCLUSO
+======================================== -->
+
+<div class="wrap reveal">
+
+  <p class="lbl">
+    // WHAT'S INCLUDED
+  </p>
+
+  <h2 class="sec-title">
+
+    Everything you need<br/>
+
+    <span class="accent">
+      to go all the way.
+    </span>
+
+  </h2>
+
+
+  <div class="inc-grid">
+
+
+    <div class="inc-card">
+
+      <div class="inc-icon">
+        📹
+      </div>
+
+      <p class="inc-title">
+        12 Live Sessions
+      </p>
+
+      <p class="inc-desc">
+        Weekly 90-minute group coaching calls with direct instruction,
+        Q&A, and live memory exercises.
+      </p>
+
+    </div>
+
+
+    <div class="inc-card">
+
+      <div class="inc-icon">
+        🌐
+      </div>
+
+      <p class="inc-title">
+        Private Community
+      </p>
+
+      <p class="inc-desc">
+        Exclusive members-only space for daily practice sharing,
+        accountability, and peer support.
+      </p>
+
+    </div>
+
+
+    <div class="inc-card">
+
+      <div class="inc-icon">
+        🏆
+      </div>
+
+      <p class="inc-title">
+        Monthly Challenges
+      </p>
+
+      <p class="inc-desc">
+        Three 60-day structured training challenges — one per month —
+        with measurable milestones.
+      </p>
+
+    </div>
+
+
+    <div class="inc-card">
+
+      <div class="inc-icon">
+        💬
+      </div>
+
+      <p class="inc-title">
+        Direct Q&A Access
+      </p>
+
+      <p class="inc-desc">
+        Ask your specific questions and get direct answers during
+        every live session.
+      </p>
+
+    </div>
+
+
+    <div class="inc-card">
+
+      <div class="inc-icon">
+        ♾️
+      </div>
+
+      <p class="inc-title">
+        All Session Replays
+      </p>
+
+      <p class="inc-desc">
+        Every session recorded and available in the member library
+        within 24 hours.
+      </p>
+
+    </div>
+
+
+    <div class="inc-card">
+
+      <div class="inc-icon">
+        📋
+      </div>
+
+      <p class="inc-title">
+        PDF Welcome Guide
+      </p>
+
+      <p class="inc-desc">
+        Complete program overview, session schedule,
+        and quick-start checklist — delivered instantly.
+      </p>
+
+    </div>
+
+  </div>
+
 </div>
 
-<!-- Seção de Garantia -->
-<footer style="background-color:#f4f4f4;padding:40px 20px;font-family:Arial,sans-serif;border-top:1px solid #ccc;position:relative;z-index:1;">
-  <div style="max-width:800px;margin:auto;text-align:center;">
-    <div style="display:flex;flex-direction:column;align-items:center;gap:15px;">
-      <img src="images/garantia.webp" alt="Garantia 60 dias" style="display:block;width:100%;max-width:100px;height:auto;">
-      <h3 style="color:#003366;font-size:clamp(18px,4vw,24px);line-height:1.3;">60 DAYS MONEY BACK GUARANTEE 100% SATISFACTION GUARANTEED</h3>
-      <p style="font-size:16px;color:#333;max-width:600px;line-height:1.6;">
-        We offer a 100% Money Back Guarantee: 60 business days from the date of your original purchase. If you are not fully satisfied with our product or your results within the first 60 days, we will simply notify you by email and we will be happy to refund you in full within 48 hours.
+
+<hr class="rule"/>
+
+
+<!-- ========================================
+     90 DAY STRUCTURE
+======================================== -->
+
+<div class="wrap reveal">
+
+  <p class="lbl">
+    // 90-DAY STRUCTURE
+  </p>
+
+  <h2 class="sec-title">
+
+    Three phases.<br/>
+
+    <span class="accent">
+      Progressive mastery.
+    </span>
+
+  </h2>
+
+
+  <div class="timeline">
+
+
+    <div class="t-item">
+
+      <p class="t-period">
+        MONTH 1 — DAYS 1–30
       </p>
-    </div>
-    <div style="margin-top:40px;border-top:1px solid #ccc;padding-top:20px;">
-      <p style="color:#555;">© 2026 Neural Edge · All rights reserved</p>
-      <p style="margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 0;">
-        <a href="https://wellnessinside.online/privac" style="color:#003366;margin:0 10px;text-decoration:none;">Privacy policy</a><span style="color:#555;">|</span>
-        <a href="https://wellnessinside.online/terminos" style="color:#003366;margin:0 10px;text-decoration:none;">Terms and Conditions</a><span style="color:#555;">|</span>
-        <a href="https://wellnessinside.online/contact" style="color:#003366;margin:0 10px;text-decoration:none;">Contacts</a><span style="color:#555;">|</span>
-        <a href="https://wellnessinside.online/responsabilidad" style="color:#003366;margin:0 10px;text-decoration:none;">Disclaimer of liability</a>
+
+      <p class="t-title">
+        Foundation & Installation
       </p>
+
+      <p class="t-desc">
+        Install all 7 Neural Edge systems with live coaching support.
+        Build the daily practice habit.
+        Benchmark your starting performance.
+      </p>
+
     </div>
+
+
+    <div class="t-item">
+
+      <p class="t-period">
+        MONTH 2 — DAYS 31–60
+      </p>
+
+      <p class="t-title">
+        Application & Speed
+      </p>
+
+      <p class="t-desc">
+        Apply your systems to real professional challenges.
+        Increase speed and automaticity.
+        Measure and celebrate performance gains.
+      </p>
+
+    </div>
+
+
+    <div class="t-item">
+
+      <p class="t-period">
+        MONTH 3 — DAYS 61–90
+      </p>
+
+      <p class="t-title">
+        Mastery & Maintenance
+      </p>
+
+      <p class="t-desc">
+        Lock in your new cognitive baseline.
+        Design your long-term maintenance system.
+        Graduate with measurable, documented improvement.
+      </p>
+
+    </div>
+
   </div>
+
+</div>
+
+
+<hr class="rule"/>
+
+
+<!-- ========================================
+     ORDER BOX
+======================================== -->
+
+<div
+  class="wrap reveal"
+  id="order"
+>
+
+  <div class="price-box">
+
+
+    <div style="
+      font-family:'Space Mono',monospace;
+      font-size:11px;
+      color:var(--neon);
+      letter-spacing:0.15em;
+      position:absolute;
+      top:-0.65rem;
+      left:50%;
+      transform:translateX(-50%);
+      background:var(--bg);
+      padding:0 1rem;
+    ">
+
+      NEURAL ELITE CIRCLE
+
+    </div>
+
+
+    <!-- PLANOS -->
+
+    <div class="plan-row">
+
+
+      <div
+        class="plan featured"
+        data-plan="full"
+        onclick="selectPlan('full')"
+      >
+
+        <p class="plan-price">
+          $197
+        </p>
+
+        <p class="plan-label">
+          Full 90 days · One-time
+        </p>
+
+      </div>
+
+
+      <div
+        class="plan"
+        data-plan="monthly"
+        onclick="selectPlan('monthly')"
+      >
+
+        <p class="plan-price">
+
+          $47<span style="font-size:1rem">/mo</span>
+
+        </p>
+
+        <p class="plan-label">
+          Monthly · Cancel anytime
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- BENEFÍCIOS -->
+
+    <ul class="price-inc">
+
+      <li>
+        12 live group coaching sessions (90 min each)
+      </li>
+
+      <li>
+        Private community access for 90 days
+      </li>
+
+      <li>
+        3 monthly structured challenges
+      </li>
+
+      <li>
+        Direct Q&A with instructor
+      </li>
+
+      <li>
+        All session replays in member library
+      </li>
+
+      <li>
+        PDF Welcome Guide — instant download
+      </li>
+
+    </ul>
+
+
+    <p class="deliv">
+
+      <strong>
+        Delivery:
+      </strong>
+
+      Live online program — access details sent by email
+      after purchase via Digistore24
+
+    </p>
+
+
+    <!-- BOTÃO SIM -->
+
+    <a
+      href="https://www.checkout-ds24.com/answer/yes?template=light&product=734565"
+      class="btn"
+      id="order-cta"
+      style="display:inline-block;margin-top:1.5rem;"
+    >
+      Join Neural Elite Circle — $197 →
+    </a>
+
+
+    <!-- BOTÃO NÃO -->
+
+    <br/>
+
+    <a
+      href="https://www.checkout-ds24.com/answer/no"
+      class="btn-no"
+    >
+      No thanks, I prefer to train alone
+    </a>
+
+
+    <p class="guar">
+      🔒 60-day money-back guarantee on all purchases.
+    </p>
+
+
+    <p style="
+      font-size:11px;
+      color:var(--dark);
+      margin-top:1rem;
+    ">
+
+      Results may vary.
+      Educational purposes only.
+      Digistore24 is the authorized reseller.
+
+      <br/>
+
+      <strong>
+        Support:
+      </strong>
+
+      blueprintsupport10@gmail.com
+
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- ========================================
+     GARANTIA
+======================================== -->
+
+<footer style="
+  background-color:#f4f4f4;
+  padding:40px 20px;
+  font-family:Arial,sans-serif;
+  border-top:1px solid #ccc;
+  position:relative;
+  z-index:1;
+">
+
+  <div style="
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+  ">
+
+
+    <div style="
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:15px;
+    ">
+
+
+      <img
+        src="images/garantia.webp"
+        alt="Garantia 60 dias"
+        style="
+          display:block;
+          width:100%;
+          max-width:100px;
+          height:auto;
+        "
+      >
+
+
+      <h3 style="
+        color:#003366;
+        font-size:clamp(18px,4vw,24px);
+        line-height:1.3;
+      ">
+
+        60 DAYS MONEY BACK GUARANTEE
+        100% SATISFACTION GUARANTEED
+
+      </h3>
+
+
+      <p style="
+        font-size:16px;
+        color:#333;
+        max-width:600px;
+        line-height:1.6;
+      ">
+
+        We offer a 100% Money Back Guarantee:
+        60 business days from the date of your original purchase.
+
+        If you are not fully satisfied with our product or your results
+        within the first 60 days, we will simply notify you by email
+        and we will be happy to refund you in full within 48 hours.
+
+      </p>
+
+    </div>
+
+
+    <div style="
+      margin-top:40px;
+      border-top:1px solid #ccc;
+      padding-top:20px;
+    ">
+
+
+      <p style="color:#555;">
+
+        © 2026 Neural Edge · All rights reserved
+
+      </p>
+
+
+      <p style="
+        margin-top:10px;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:8px 0;
+      ">
+
+
+        <a
+          href="https://wellnessinside.online/privac"
+          style="
+            color:#003366;
+            margin:0 10px;
+            text-decoration:none;
+          "
+        >
+          Privacy policy
+        </a>
+
+
+        <span style="color:#555;">
+          |
+        </span>
+
+
+        <a
+          href="https://wellnessinside.online/terminos"
+          style="
+            color:#003366;
+            margin:0 10px;
+            text-decoration:none;
+          "
+        >
+          Terms and Conditions
+        </a>
+
+
+        <span style="color:#555;">
+          |
+        </span>
+
+
+        <a
+          href="https://wellnessinside.online/contact"
+          style="
+            color:#003366;
+            margin:0 10px;
+            text-decoration:none;
+          "
+        >
+          Contacts
+        </a>
+
+
+        <span style="color:#555;">
+          |
+        </span>
+
+
+        <a
+          href="https://wellnessinside.online/responsabilidad"
+          style="
+            color:#003366;
+            margin:0 10px;
+            text-decoration:none;
+          "
+        >
+          Disclaimer of liability
+        </a>
+
+      </p>
+
+    </div>
+
+  </div>
+
 </footer>
 
+
+<!-- ========================================
+     JAVASCRIPT
+======================================== -->
+
 <script>
+
+
+/* ========================================
+   CHECKOUTS DOS PLANOS
+======================================== */
+
+const plans = {
+
+  full: {
+
+    label:
+      'Join Neural Elite Circle — $197 →',
+
+    url:
+      'https://www.checkout-ds24.com/answer/yes?template=light&product=734565'
+
+  },
+
+
+  monthly: {
+
+    label:
+      'Join Neural Elite Circle — $47/mo →',
+
+    url:
+      'https://www.checkout-ds24.com/answer/yes?template=light&product=734566'
+
+  }
+
+};
+
+
+/* ========================================
+   SELEÇÃO DO PLANO
+======================================== */
+
 function selectPlan(plan){
-  document.querySelectorAll('.plan').forEach(el=>{el.classList.toggle('featured',el.dataset.plan===plan);});
-  const labels={full:'Join Neural Elite Circle — $197 →',monthly:'Join Neural Elite Circle — $47/mo →'};
-  document.querySelectorAll('#hero-cta,#order-cta').forEach(btn=>btn.textContent=labels[plan]);
+
+  if(!plans[plan]){
+    return;
+  }
+
+
+  /* MARCA VISUALMENTE O PLANO */
+
+  document
+    .querySelectorAll('.plan')
+    .forEach(el => {
+
+      el.classList.toggle(
+        'featured',
+        el.dataset.plan === plan
+      );
+
+    });
+
+
+  /* ALTERA OS DOIS BOTÕES DE COMPRA */
+
+  document
+    .querySelectorAll('#hero-cta,#order-cta')
+    .forEach(btn => {
+
+      btn.textContent =
+        plans[plan].label;
+
+      btn.href =
+        plans[plan].url;
+
+    });
+
 }
+
+
+/* ========================================
+   PLANO PADRÃO
+======================================== */
+
 selectPlan('full');
-const reveals=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver(e=>e.forEach(r=>{if(r.isIntersecting)r.target.classList.add('visible');}),{threshold:0.08});
-reveals.forEach(r=>obs.observe(r));
+
+
+/* ========================================
+   ANIMAÇÕES
+======================================== */
+
+const reveals =
+  document.querySelectorAll('.reveal');
+
+
+const obs =
+  new IntersectionObserver(
+
+    entries =>
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target
+            .classList
+            .add('visible');
+
+        }
+
+      }),
+
+    {
+      threshold:0.08
+    }
+
+  );
+
+
+reveals.forEach(
+  element => obs.observe(element)
+);
+
+
 </script>
+
+
 </body>
 </html>
